@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "anvya",
+    "title": "ANVYA — Representation-Guided Scientific Reasoning Engine",
+    "timeframe": "Mar 2025 – Nov 2025",
+    "location": "London, UK",
+    "tags": ["Scientific Viz", "ML", "Systems"],
+    "oneLiner": "Turns biological prompts into controllable, interpretable 3D molecular visualizations instead of prompt-magic.",
+    "problem": "Most molecular visualization workflows are powerful but manual; automated ones often hide assumptions. ANVYA aims to make structure generation explicit, controllable, and failure-aware.",
+    "built": [
+      "Designed a dual-mode (scientific/game) 3D visualization engine for molecular structures.",
+      "Integrated semantic parsing, predictive assembly, and refinement using PyMOL, SMILES interpreters, and AlphaFold outputs.",
+      "Built a context-aware visualization controller and custom domain-specific prompt layer."
+    ],
+    "stack": ["Python", "PyMOL", "AlphaFold outputs", "SMILES", "Prompt parsing"],
+    "results": [
+      "Reusable pipeline that converts prompts into structured visualization actions.",
+      "Clear separation of reasoning, assembly, and rendering for debuggability."
+    ],
+    "links": { "github": "", "demo": "", "paper": "" }
+  },
+  {
+    "slug": "human3d",
+    "title": "Human3D — Context-Aware 3D Reconstruction",
+    "timeframe": "Oct 2025 – Present",
+    "location": "London, UK",
+    "tags": ["Vision", "Graphics", "Biomechanics"],
+    "oneLiner": "End-to-end 2D-to-3D reconstruction with scene context and biomechanical constraints for plausibility.",
+    "problem": "Pure vision pipelines can produce anatomically implausible humans. Human3D adds constraints and context so reconstructions behave like real bodies.",
+    "built": [
+      "Implemented pipeline using MiDaS (depth), YOLO (keypoints), SAM/CLIP (segmentation).",
+      "Built 3D reconstruction using SMPL/SMPL-X and PyTorch3D; used Blender for evaluation.",
+      "Developing differentiable constraints: joint limits, bone-length priors, COM stability."
+    ],
+    "stack": ["PyTorch", "MiDaS", "YOLO", "SAM", "CLIP", "SMPL/SMPL-X", "PyTorch3D", "Blender"],
+    "results": [
+      "Manuscript under submission to CVWW 2026; extended version in preparation for CRV 2026."
+    ],
+    "links": { "github": "", "demo": "", "paper": "" }
+  },
+  {
+    "slug": "noninvasive-biomarker-ml",
+    "title": "Undergrad Thesis — Non-Invasive Biomarker ML System",
+    "timeframe": "Aug 2024 – May 2025",
+    "location": "Visakhapatnam, India",
+    "tags": ["ML", "Simulation", "Signal Processing"],
+    "oneLiner": "Monte Carlo photon-transport simulation + regression models for haemoglobin and glucose estimation.",
+    "problem": "Non-invasive physiological estimation suffers from noisy signals and limited labeled data. This project uses physics-based simulation plus ML to predict biomarkers from spectral signals.",
+    "built": [
+      "Generated synthetic optical dataset via Monte Carlo photon-transport simulations.",
+      "Built regression models (RF, MLP, SVR) for haemoglobin and glucose prediction.",
+      "Designed signal-processing + feature extraction for noisy spectral data; validated on a small experimental dataset."
+    ],
+    "stack": ["Python", "Monte Carlo simulation", "RF", "MLP", "SVR"],
+    "results": [
+      "End-to-end pipeline from simulated spectra to biomarker estimates.",
+      "Documented validation behavior and robustness limits."
+    ],
+    "links": { "github": "", "demo": "", "paper": "" }
+  },
+  {
+    "slug": "adaptive-prosthesis-control",
+    "title": "Smart India Hackathon — Adaptive Prosthesis Control System",
+    "timeframe": "Oct 2023 – May 2024",
+    "location": "Visakhapatnam, India",
+    "tags": ["Robotics", "BCI", "Control"],
+    "oneLiner": "EEG-driven control pipeline with stabilised real-time servo execution for multi-gesture movements.",
+    "problem": "BCI signals are noisy and unstable, but prosthetic control needs reliable commands. This system focuses on robust preprocessing and stabilised actuation.",
+    "built": [
+      "Designed EEG preprocessing, artifact removal, and gesture classification pipeline.",
+      "Implemented real-time servo control for multi-gesture arm movements.",
+      "Built a stabilisation layer for noise-suppressed command execution."
+    ],
+    "stack": ["Python", "Signal Processing", "EEG", "Embedded control"],
+    "results": [
+      "Winner: Smart India Hackathon (Hardware Edition).",
+      "Demonstrated reliable gesture-to-actuation mapping under noise."
+    ],
+    "links": { "github": "", "demo": "", "paper": "" }
+  }
+]

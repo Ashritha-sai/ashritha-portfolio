@@ -1,0 +1,35 @@
+[
+  {
+    "role": "Research Intern — Physics-informed ML",
+    "org": "Indian Institute of Technology, Jodhpur",
+    "timeframe": "May 2025 – Aug 2025",
+    "location": "Jodhpur, India",
+    "bullets": [
+      "Implemented Kalman and complementary filtering to suppress drift/noise in trajectory tracking, improving temporal consistency.",
+      "Analysed accuracy trends across subjects and movement conditions; documented stability and failure modes.",
+      "Extracted spatiotemporal features (symmetry, curvature, jerk) for early-stage motor-pattern analysis and anomaly detection."
+    ]
+  },
+  {
+    "role": "Research Assistant — Human-in-the-loop Systems | Adaptive Policies",
+    "org": "Indian Institute of Technology, Kanpur",
+    "timeframe": "Oct 2024 – Apr 2025",
+    "location": "Kanpur, India",
+    "bullets": [
+      "Built full inverse kinematics & dynamics pipeline using OpenSim to estimate joint angles, torques, and COM trajectories.",
+      "Engineered biomechanical features for downstream ML modelling (joint evolution, torque envelopes, gait segmentation).",
+      "Designed cross-subject comparisons to study robustness and variability in force distribution."
+    ]
+  },
+  {
+    "role": "SRFP Fellow — IASc–INSA–NASI & JNCASR",
+    "org": "TDU & IIT Kanpur",
+    "timeframe": "May–Aug 2023/24",
+    "location": "Bengaluru / Kanpur, India",
+    "bullets": [
+      "Designed experiments, collected data, and implemented preprocessing pipelines for complex biological time-series signals.",
+      "Conducted exploratory analysis to identify trends, outliers, and biological correlates and used findings to refine experiments.",
+      "Presented findings at a scientific conference with clear discussion of limitations."
+    ]
+  }
+]
