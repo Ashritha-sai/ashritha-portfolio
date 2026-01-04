@@ -18,20 +18,125 @@ type Node = {
   isCurrent?: boolean;
 };
 
+/**
+ * TechnicalTextureBackground
+ * Subtle abstract technical texture: faint grid + noise + soft glow blobs + contour-ish lines.
+ * - Always behind interactive elements
+ * - Never captures pointer events
+ * - Designed to be "felt", not noticed
+ */
+function TechnicalTextureBackground() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+      {/* Base faint grid */}
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.12]"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.3" />
+          </pattern>
+
+          {/* Noise */}
+          <filter id="noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              numOctaves="2"
+              stitchTiles="stitch"
+              result="turb"
+            />
+            <feColorMatrix
+              type="matrix"
+              values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.18 0"
+            />
+          </filter>
+
+          {/* Soft blur for contours */}
+          <filter id="softBlur">
+            <feGaussianBlur stdDeviation="0.55" />
+          </filter>
+
+          {/* Accent gradients */}
+          <radialGradient id="g1" cx="35%" cy="25%" r="55%">
+            <stop offset="0%" stopColor="rgba(56,189,248,0.35)" />
+            <stop offset="55%" stopColor="rgba(56,189,248,0.12)" />
+            <stop offset="100%" stopColor="rgba(56,189,248,0)" />
+          </radialGradient>
+          <radialGradient id="g2" cx="70%" cy="45%" r="55%">
+            <stop offset="0%" stopColor="rgba(217,70,239,0.30)" />
+            <stop offset="55%" stopColor="rgba(217,70,239,0.10)" />
+            <stop offset="100%" stopColor="rgba(217,70,239,0)" />
+          </radialGradient>
+          <radialGradient id="g3" cx="45%" cy="80%" r="65%">
+            <stop offset="0%" stopColor="rgba(16,185,129,0.26)" />
+            <stop offset="55%" stopColor="rgba(16,185,129,0.09)" />
+            <stop offset="100%" stopColor="rgba(16,185,129,0)" />
+          </radialGradient>
+        </defs>
+
+        {/* grid */}
+        <rect width="100" height="100" fill="url(#grid)" />
+
+        {/* glow blobs */}
+        <rect width="100" height="100" fill="url(#g1)" />
+        <rect width="100" height="100" fill="url(#g2)" />
+        <rect width="100" height="100" fill="url(#g3)" />
+
+        {/* contour-ish lines (soft) */}
+        <g filter="url(#softBlur)" opacity="0.6">
+          <path
+            d="M-10,25 C10,10 25,40 45,28 C60,19 72,8 110,20"
+            fill="none"
+            stroke="rgba(255,255,255,0.10)"
+            strokeWidth="0.7"
+          />
+          <path
+            d="M-10,55 C18,62 28,42 48,54 C63,63 76,78 110,70"
+            fill="none"
+            stroke="rgba(255,255,255,0.09)"
+            strokeWidth="0.7"
+          />
+          <path
+            d="M-10,85 C22,76 34,92 56,82 C74,74 86,60 110,78"
+            fill="none"
+            stroke="rgba(255,255,255,0.08)"
+            strokeWidth="0.7"
+          />
+        </g>
+
+        {/* noise overlay */}
+        <rect width="100" height="100" filter="url(#noise)" opacity="0.55" />
+      </svg>
+
+      {/* Very subtle vignette to keep edges calm */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.25)_70%,rgba(0,0,0,0.40)_100%)]" />
+    </div>
+  );
+}
+
 function color(category: Category) {
+  // Brighter, cleaner accents (still translucent).
   switch (category) {
     case "Now":
-      return "border-emerald-300/80 bg-emerald-300/20 shadow-[0_0_0_10px_rgba(16,185,129,0.08)]";
+      return "border-emerald-300/90 bg-emerald-300/25 shadow-[0_0_0_12px_rgba(16,185,129,0.10)]";
     case "Imperial":
-      return "border-sky-300/80 bg-sky-300/20 shadow-[0_0_0_10px_rgba(56,189,248,0.06)]";
+      return "border-cyan-300/90 bg-cyan-300/22 shadow-[0_0_0_12px_rgba(34,211,238,0.10)]";
     case "National":
-      return "border-fuchsia-300/80 bg-fuchsia-300/20 shadow-[0_0_0_10px_rgba(217,70,239,0.06)]";
+      return "border-fuchsia-300/90 bg-fuchsia-300/22 shadow-[0_0_0_12px_rgba(217,70,239,0.10)]";
     case "Volunteering":
-      return "border-amber-300/80 bg-amber-300/20 shadow-[0_0_0_10px_rgba(251,191,36,0.06)]";
+      return "border-amber-300/90 bg-amber-300/22 shadow-[0_0_0_12px_rgba(251,191,36,0.09)]";
     case "Service":
-      return "border-violet-300/80 bg-violet-300/20 shadow-[0_0_0_10px_rgba(167,139,250,0.06)]";
+      return "border-violet-300/90 bg-violet-300/22 shadow-[0_0_0_12px_rgba(167,139,250,0.09)]";
     case "Student":
-      return "border-white/40 bg-white/10 shadow-[0_0_0_10px_rgba(255,255,255,0.03)]";
+      return "border-white/45 bg-white/10 shadow-[0_0_0_12px_rgba(255,255,255,0.04)]";
     default:
       return "border-white/40 bg-white/10";
   }
@@ -40,17 +145,17 @@ function color(category: Category) {
 function badge(category: Category) {
   switch (category) {
     case "Now":
-      return "border-emerald-300/40 bg-emerald-300/10 text-emerald-100";
+      return "border-emerald-300/50 bg-emerald-300/15 text-emerald-100";
     case "Imperial":
-      return "border-sky-300/40 bg-sky-300/10 text-sky-100";
+      return "border-cyan-300/50 bg-cyan-300/15 text-cyan-100";
     case "National":
-      return "border-fuchsia-300/40 bg-fuchsia-300/10 text-fuchsia-100";
+      return "border-fuchsia-300/50 bg-fuchsia-300/15 text-fuchsia-100";
     case "Volunteering":
-      return "border-amber-300/40 bg-amber-300/10 text-amber-100";
+      return "border-amber-300/50 bg-amber-300/15 text-amber-100";
     case "Service":
-      return "border-violet-300/40 bg-violet-300/10 text-violet-100";
+      return "border-violet-300/50 bg-violet-300/15 text-violet-100";
     case "Student":
-      return "border-white/15 bg-white/[0.03] text-neutral-200";
+      return "border-white/20 bg-white/[0.04] text-neutral-200";
     default:
       return "border-white/15 bg-white/[0.03] text-neutral-200";
   }
@@ -120,10 +225,7 @@ export default function LeadershipPage() {
           "Owned participant scheduling, volunteer allocation, and escalation handling.",
           "Coordinated with institutional stakeholders and government officials.",
         ],
-        highlights: [
-          "50+ teams (6 students + 2 professors per team).",
-          "~30 volunteers managed.",
-        ],
+        highlights: ["50+ teams (6 students + 2 professors per team).", "~30 volunteers managed."],
         tags: ["scale", "ops", "stakeholders"],
       },
       {
@@ -161,10 +263,7 @@ export default function LeadershipPage() {
         title: "Class Representative",
         org: "GITAM",
         period: "2022 – 2025",
-        details: [
-          "Handled student coordination and communication across stakeholders.",
-          "Kept feedback loops short and execution predictable.",
-        ],
+        details: ["Handled student coordination and communication across stakeholders.", "Kept feedback loops short and execution predictable."],
         tags: ["coordination", "responsibility"],
       },
       {
@@ -208,17 +307,13 @@ export default function LeadershipPage() {
         title: "Volunteer",
         org: "U&I (Teaching / Mentoring)",
         period: "Before London",
-        details: [
-          "Volunteered with children’s learning and mentorship support.",
-          "Built patience and clarity in communication.",
-        ],
+        details: ["Volunteered with children’s learning and mentorship support.", "Built patience and clarity in communication."],
         tags: ["education", "impact"],
       },
     ],
     []
   );
 
-  // edges just for vibe (you can add/remove)
   const edges = useMemo(
     () => [
       ["impact_smo", "impact_co"],
@@ -237,7 +332,6 @@ export default function LeadershipPage() {
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = useMemo(() => nodes.find((n) => n.id === activeId) ?? null, [nodes, activeId]);
-
   const byId = useMemo(() => Object.fromEntries(nodes.map((n) => [n.id, n])), [nodes]);
 
   return (
@@ -251,7 +345,10 @@ export default function LeadershipPage() {
 
       {/* IMPORTANT: overflow-visible so popover never gets clipped */}
       <section className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 overflow-visible">
-        <div className="relative h-[680px] w-full overflow-visible">
+        {/* NEW: technical texture background */}
+        <TechnicalTextureBackground />
+
+        <div className="relative z-10 h-[680px] w-full overflow-visible">
           {/* Edges (SVG) */}
           <svg className="pointer-events-none absolute inset-0 h-full w-full">
             {edges.map(([a, b]) => {
@@ -266,7 +363,7 @@ export default function LeadershipPage() {
                   y1={`${A.y}%`}
                   x2={`${B.x}%`}
                   y2={`${B.y}%`}
-                  stroke="rgba(255,255,255,0.10)"
+                  stroke="rgba(255,255,255,0.13)"
                   strokeWidth="1"
                 />
               );
@@ -285,6 +382,7 @@ export default function LeadershipPage() {
                 onClick={() => setActiveId(n.id)}
                 className={[
                   "absolute -translate-x-1/2 -translate-y-1/2 rounded-full transition",
+                  "ring-1 ring-white/10",
                   color(n.category),
                   isActive ? "scale-110" : "hover:scale-110",
                 ].join(" ")}
@@ -364,7 +462,7 @@ export default function LeadershipPage() {
           ) : null}
 
           {/* Subtle “current cluster” label */}
-          <div className="pointer-events-none absolute left-[14%] top-[10%] text-xs text-neutral-400">
+          <div className="pointer-events-none absolute left-[14%] top-[10%] text-xs text-neutral-300/80">
             Current
           </div>
         </div>
