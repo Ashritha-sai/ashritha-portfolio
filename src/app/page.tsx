@@ -1,18 +1,15 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
-import { HandLinefieldBackground } from "@/components/HandLinefieldBackground";
+import { ArmLinefieldBackground } from "@/components/ArmLinefieldBackground";
+
 
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       {/* Animated background */}
-      <HandLinefieldBackground
-  opacity={0.5}
-  density={0.9}
-  speed={1}
-  accent="cyan"
-/>
+      <ArmLinefieldBackground opacity={0.55} density={1} speed={1} />
+
 
 
       {/* Foreground content */}
