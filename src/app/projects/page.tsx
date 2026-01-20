@@ -12,7 +12,7 @@ type Project = {
 const featured: Project[] = [
   
   {
-    slug: "MSc Porject",
+    slug: "MSc Project",
     title: "Neuromorphic Control for Robotic Augmentation",
     desc: "EMG–IMU Fusion",
     date: "Jan 2026 – Present",
