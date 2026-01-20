@@ -66,7 +66,7 @@ export function ParticleBackground() {
           y: Math.random() * h,
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
+          size: Math.random() * 2.5 + 1.5,
         });
       }
     };
@@ -128,7 +128,7 @@ export function ParticleBackground() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(100, 116, 139, 0.5)"; // slate-500
+        ctx.fillStyle = "rgba(71, 85, 105, 0.7)"; // slate-600
         ctx.fill();
       }
 
@@ -141,11 +141,11 @@ export function ParticleBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < CONNECTION_DISTANCE) {
-            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.2;
+            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.4;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(148, 163, 184, ${opacity})`; // slate-400
+            ctx.strokeStyle = `rgba(100, 116, 139, ${opacity})`; // slate-500
             ctx.stroke();
           }
         }
@@ -159,11 +159,11 @@ export function ParticleBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < MOUSE_INFLUENCE_DISTANCE) {
-            const opacity = (1 - dist / MOUSE_INFLUENCE_DISTANCE) * 0.3;
+            const opacity = (1 - dist / MOUSE_INFLUENCE_DISTANCE) * 0.5;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(100, 116, 139, ${opacity})`; // slate-500
+            ctx.strokeStyle = `rgba(71, 85, 105, ${opacity})`; // slate-600
             ctx.stroke();
           }
         }

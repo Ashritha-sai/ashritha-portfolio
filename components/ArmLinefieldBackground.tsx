@@ -193,8 +193,8 @@ export function ArmLinefieldBackground({
 
       // draw faint guide stroke (only when visible)
       if (vis > 0) {
-        ctx.globalAlpha = 0.22 * opacity * vis;
-        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.45 * opacity * vis;
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
         for (let i = 0; i < maxIndex; i++) {
           const p = guide[i];
@@ -211,7 +211,7 @@ export function ArmLinefieldBackground({
       const timeJitter = (now / 1000) * 0.8;
 
       // connections: draw tiny line segments between nearby particles on the guide
-      ctx.globalAlpha = 0.55 * opacity * vis;
+      ctx.globalAlpha = 0.75 * opacity * vis;
       ctx.lineWidth = 1;
 
       for (const p of particles) {
@@ -232,9 +232,9 @@ export function ArmLinefieldBackground({
         const py = gy + Math.cos((p.phase + timeJitter) * 2.7) * j + p.jitter * 2;
 
         // draw point
-        ctx.globalAlpha = 0.55 * opacity * vis;
+        ctx.globalAlpha = 0.8 * opacity * vis;
         ctx.beginPath();
-        ctx.arc(px, py, 1.4, 0, Math.PI * 2);
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
 
         ctx.fillStyle = "rgba(71,85,105,1)";
         ctx.fill();
@@ -244,10 +244,10 @@ export function ArmLinefieldBackground({
         const nx = ox + (next.x - 0.5) * scale;
         const ny = oy + (next.y - 0.5) * scale;
 
-        ctx.globalAlpha = 0.25 * opacity * vis;
+        ctx.globalAlpha = 0.5 * opacity * vis;
         ctx.beginPath();
         ctx.moveTo(px, py);
-        ctx.lineTo(lerp(px, nx, 0.22), lerp(py, ny, 0.22));
+        ctx.lineTo(lerp(px, nx, 0.28), lerp(py, ny, 0.28));
         ctx.strokeStyle = "rgba(71,85,105,1)";
         ctx.stroke();
       }
@@ -268,7 +268,7 @@ return (
   <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
     <canvas ref={canvasRef} className="absolute inset-0" />
     {/* very light readability mask for light theme */}
-    <div className="absolute inset-0 bg-gradient-to-b from-slate-100/10 via-slate-100/20 to-slate-100/35" />
+    <div className="absolute inset-0 bg-gradient-to-b from-slate-100/5 via-slate-100/10 to-slate-100/20" />
   </div>
 );
 }
