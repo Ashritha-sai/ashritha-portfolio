@@ -48,9 +48,8 @@ export default function Home() {
                 </li>
 
                 <li>
-                  <span className="text-neutral-100">ANVYA:</span>{" "}
-                  representation rules for reliable, repeatable scientific
-                  renders.
+                  <span className="text-neutral-100">Active Sensing under Uncertanity:</span>{" "}
+                  Reinforcement Learning in Uncertain Biomedical Settings.
                 </li>
               </ul>
             </div>

@@ -12,6 +12,13 @@ type Project = {
 const featured: Project[] = [
   
   {
+    slug: "MSc Porject",
+    title: "Neuromorphic Control for Robotic Augmentation",
+    desc: "EMG–IMU Fusion",
+    date: "Jan 2026 – Present",
+    tags: ["Bio-Signal Processing", "Sensor Fusion", "Continuous Control", "Human-Robot Interaction", "Neuromorphic Principles",],
+  },
+  {
     slug: "Active Sensing",
     title: "Active Sensing under Uncertainty",
     desc: "Reinforcement Learning & Biomedical Simulation",
