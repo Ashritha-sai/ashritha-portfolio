@@ -10,12 +10,13 @@ type Project = {
 };
 
 const featured: Project[] = [
+  
   {
-    slug: "anvya",
-    title: "ANVYA",
-    desc: "Natural-language driven scientific visualisation system with explicit control over representations.",
-    date: "Mar 2025 – Present",
-    tags: ["LLM systems", "product pipeline", "visualisation"],
+    slug: "Active Sensing",
+    title: "Active Sensing under Uncertainty",
+    desc: "Reinforcement Learning & Biomedical Simulation",
+    date: "Nov 2025 – Present",
+    tags: ["reinforcement learning", "active sensing", "monte carlo simulation", "biomedical modelling", "partial observability",],
   },
   {
     slug: "human3d",
@@ -23,6 +24,13 @@ const featured: Project[] = [
     desc: "Context-aware 3D reconstruction pipeline integrating depth, keypoints, segmentation, and constraints.",
     date: "Oct 2025 – Present",
     tags: ["perception", "pipeline", "constraints"],
+  },
+  {
+    slug: "anvya",
+    title: "ANVYA",
+    desc: "Natural-language driven scientific visualisation system with explicit control over representations.",
+    date: "Mar 2025 – Jan 2026",
+    tags: ["LLM systems", "product pipeline", "visualisation"],
   },
   {
     slug: "biomarker",

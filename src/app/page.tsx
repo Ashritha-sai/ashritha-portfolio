@@ -17,14 +17,12 @@ export default function Home() {
         <FadeIn>
           <header className="space-y-6 pt-6">
             <h1 className="text-5xl font-semibold tracking-tight">
-              Builder of end-to-end AI systems
+            Builder of embodied AI systems for human–machine interaction
             </h1>
 
             <p className="max-w-2xl text-lg text-neutral-300">
-              I build systems that turn ambiguous ideas into working software:
-              full-stack mindset, ML systems, and product-driven engineering.
-              Currently at Imperial College London (MSc Human & Biological
-              Robotics, 2025–26).
+              I design and build end-to-end bio-mechatronic and embodied AI systems, spanning sensing, learning, and control.
+              MSc Human & Biological Robotics, Imperial College London (2025–26).
             </p>
 
             {/* Building now */}
@@ -105,9 +103,9 @@ export default function Home() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FeatureCard
-                title="ANVYA"
-                subtitle="Natural-language driven scientific visualisation"
-                href="/projects/anvya"
+                title="Active Sensing under Uncertanity"
+                subtitle=" Reinforcement Learning & Biomedical Simulation"
+                href="/projects/Active Sensing"
               />
               <FeatureCard
                 title="Human3D"
