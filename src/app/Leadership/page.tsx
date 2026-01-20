@@ -30,14 +30,14 @@ function TechnicalTextureBackground() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
       {/* Base faint grid */}
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.12]"
+        className="absolute inset-0 h-full w-full opacity-[0.08]"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
         <defs>
           <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
-            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.3" />
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(100,116,139,0.25)" strokeWidth="0.3" />
           </pattern>
 
           {/* Noise */}
@@ -55,7 +55,7 @@ function TechnicalTextureBackground() {
                 1 0 0 0 0
                 0 1 0 0 0
                 0 0 1 0 0
-                0 0 0 0.18 0"
+                0 0 0 0.08 0"
             />
           </filter>
 
@@ -64,20 +64,20 @@ function TechnicalTextureBackground() {
             <feGaussianBlur stdDeviation="0.55" />
           </filter>
 
-          {/* Accent gradients */}
+          {/* Accent gradients - softer for light theme */}
           <radialGradient id="g1" cx="35%" cy="25%" r="55%">
-            <stop offset="0%" stopColor="rgba(56,189,248,0.35)" />
-            <stop offset="55%" stopColor="rgba(56,189,248,0.12)" />
+            <stop offset="0%" stopColor="rgba(56,189,248,0.15)" />
+            <stop offset="55%" stopColor="rgba(56,189,248,0.05)" />
             <stop offset="100%" stopColor="rgba(56,189,248,0)" />
           </radialGradient>
           <radialGradient id="g2" cx="70%" cy="45%" r="55%">
-            <stop offset="0%" stopColor="rgba(217,70,239,0.30)" />
-            <stop offset="55%" stopColor="rgba(217,70,239,0.10)" />
+            <stop offset="0%" stopColor="rgba(217,70,239,0.12)" />
+            <stop offset="55%" stopColor="rgba(217,70,239,0.04)" />
             <stop offset="100%" stopColor="rgba(217,70,239,0)" />
           </radialGradient>
           <radialGradient id="g3" cx="45%" cy="80%" r="65%">
-            <stop offset="0%" stopColor="rgba(16,185,129,0.26)" />
-            <stop offset="55%" stopColor="rgba(16,185,129,0.09)" />
+            <stop offset="0%" stopColor="rgba(16,185,129,0.10)" />
+            <stop offset="55%" stopColor="rgba(16,185,129,0.03)" />
             <stop offset="100%" stopColor="rgba(16,185,129,0)" />
           </radialGradient>
         </defs>
@@ -91,73 +91,73 @@ function TechnicalTextureBackground() {
         <rect width="100" height="100" fill="url(#g3)" />
 
         {/* contour-ish lines (soft) */}
-        <g filter="url(#softBlur)" opacity="0.6">
+        <g filter="url(#softBlur)" opacity="0.4">
           <path
             d="M-10,25 C10,10 25,40 45,28 C60,19 72,8 110,20"
             fill="none"
-            stroke="rgba(255,255,255,0.10)"
+            stroke="rgba(100,116,139,0.15)"
             strokeWidth="0.7"
           />
           <path
             d="M-10,55 C18,62 28,42 48,54 C63,63 76,78 110,70"
             fill="none"
-            stroke="rgba(255,255,255,0.09)"
+            stroke="rgba(100,116,139,0.12)"
             strokeWidth="0.7"
           />
           <path
             d="M-10,85 C22,76 34,92 56,82 C74,74 86,60 110,78"
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="rgba(100,116,139,0.10)"
             strokeWidth="0.7"
           />
         </g>
 
         {/* noise overlay */}
-        <rect width="100" height="100" filter="url(#noise)" opacity="0.55" />
+        <rect width="100" height="100" filter="url(#noise)" opacity="0.3" />
       </svg>
 
-      {/* Very subtle vignette to keep edges calm */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.25)_70%,rgba(0,0,0,0.40)_100%)]" />
+      {/* Very subtle vignette for edges - light version */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(241,245,249,0)_0%,rgba(241,245,249,0.4)_70%,rgba(241,245,249,0.6)_100%)]" />
     </div>
   );
 }
 
 function color(category: Category) {
-  // Brighter, cleaner accents (still translucent).
+  // Brighter, cleaner accents for light theme.
   switch (category) {
     case "Now":
-      return "border-emerald-300/90 bg-emerald-300/25 shadow-[0_0_0_12px_rgba(16,185,129,0.10)]";
+      return "border-emerald-500 bg-emerald-200 shadow-[0_0_0_12px_rgba(16,185,129,0.15)]";
     case "Imperial":
-      return "border-cyan-300/90 bg-cyan-300/22 shadow-[0_0_0_12px_rgba(34,211,238,0.10)]";
+      return "border-cyan-500 bg-cyan-200 shadow-[0_0_0_12px_rgba(34,211,238,0.15)]";
     case "National":
-      return "border-fuchsia-300/90 bg-fuchsia-300/22 shadow-[0_0_0_12px_rgba(217,70,239,0.10)]";
+      return "border-fuchsia-500 bg-fuchsia-200 shadow-[0_0_0_12px_rgba(217,70,239,0.15)]";
     case "Volunteering":
-      return "border-amber-300/90 bg-amber-300/22 shadow-[0_0_0_12px_rgba(251,191,36,0.09)]";
+      return "border-amber-500 bg-amber-200 shadow-[0_0_0_12px_rgba(251,191,36,0.15)]";
     case "Service":
-      return "border-violet-300/90 bg-violet-300/22 shadow-[0_0_0_12px_rgba(167,139,250,0.09)]";
+      return "border-violet-500 bg-violet-200 shadow-[0_0_0_12px_rgba(167,139,250,0.15)]";
     case "Student":
-      return "border-white/45 bg-white/10 shadow-[0_0_0_12px_rgba(255,255,255,0.04)]";
+      return "border-slate-400 bg-slate-200 shadow-[0_0_0_12px_rgba(100,116,139,0.10)]";
     default:
-      return "border-white/40 bg-white/10";
+      return "border-slate-400 bg-slate-200";
   }
 }
 
 function badge(category: Category) {
   switch (category) {
     case "Now":
-      return "border-emerald-300/50 bg-emerald-300/15 text-emerald-100";
+      return "border-emerald-400 bg-emerald-100 text-emerald-700";
     case "Imperial":
-      return "border-cyan-300/50 bg-cyan-300/15 text-cyan-100";
+      return "border-cyan-400 bg-cyan-100 text-cyan-700";
     case "National":
-      return "border-fuchsia-300/50 bg-fuchsia-300/15 text-fuchsia-100";
+      return "border-fuchsia-400 bg-fuchsia-100 text-fuchsia-700";
     case "Volunteering":
-      return "border-amber-300/50 bg-amber-300/15 text-amber-100";
+      return "border-amber-400 bg-amber-100 text-amber-700";
     case "Service":
-      return "border-violet-300/50 bg-violet-300/15 text-violet-100";
+      return "border-violet-400 bg-violet-100 text-violet-700";
     case "Student":
-      return "border-white/20 bg-white/[0.04] text-neutral-200";
+      return "border-slate-300 bg-slate-100 text-slate-700";
     default:
-      return "border-white/15 bg-white/[0.03] text-neutral-200";
+      return "border-slate-300 bg-slate-100 text-slate-700";
   }
 }
 
@@ -338,13 +338,13 @@ export default function LeadershipPage() {
     <div className="space-y-8">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Leadership</h1>
-        <p className="max-w-3xl text-neutral-300">
+        <p className="max-w-3xl text-slate-600">
           Click a node. Current roles are highlighted.
         </p>
       </header>
 
       {/* IMPORTANT: overflow-visible so popover never gets clipped */}
-      <section className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 overflow-visible">
+      <section className="relative rounded-2xl border border-slate-200 bg-white/80 p-6 overflow-visible">
         {/* NEW: technical texture background */}
         <TechnicalTextureBackground />
 
@@ -363,7 +363,7 @@ export default function LeadershipPage() {
                   y1={`${A.y}%`}
                   x2={`${B.x}%`}
                   y2={`${B.y}%`}
-                  stroke="rgba(255,255,255,0.13)"
+                  stroke="rgba(100,116,139,0.3)"
                   strokeWidth="1"
                 />
               );
@@ -382,7 +382,7 @@ export default function LeadershipPage() {
                 onClick={() => setActiveId(n.id)}
                 className={[
                   "absolute -translate-x-1/2 -translate-y-1/2 rounded-full transition",
-                  "ring-1 ring-white/10",
+                  "ring-1 ring-slate-300",
                   color(n.category),
                   isActive ? "scale-110" : "hover:scale-110",
                 ].join(" ")}
@@ -401,7 +401,7 @@ export default function LeadershipPage() {
           {/* Popover anchored near the active node */}
           {active ? (
             <div
-              className="absolute z-30 w-[min(520px,calc(100%-24px))] rounded-2xl border border-white/15 bg-neutral-950/70 p-5 backdrop-blur"
+              className="absolute z-30 w-[min(520px,calc(100%-24px))] rounded-2xl border border-slate-200 bg-white/95 p-5 backdrop-blur shadow-lg"
               style={{
                 left: `min(calc(${active.x}% + 22px), calc(100% - 520px))`,
                 top: `calc(${active.y}% - 20px)`,
@@ -413,25 +413,25 @@ export default function LeadershipPage() {
                     {active.category}
                   </span>
 
-                  <div className="mt-2 text-base font-semibold text-neutral-100">
+                  <div className="mt-2 text-base font-semibold text-slate-800">
                     {active.title} — {active.org}
                   </div>
-                  <div className="mt-1 text-xs text-neutral-400">{active.period}</div>
+                  <div className="mt-1 text-xs text-slate-500">{active.period}</div>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setActiveId(null)}
-                  className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-neutral-200 transition hover:bg-white/[0.07]"
+                  className="rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-700 transition hover:bg-white"
                 >
                   ✕
                 </button>
               </div>
 
               {active.highlights?.length ? (
-                <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <div className="text-xs font-semibold text-neutral-200">Highlights</div>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-neutral-300">
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
+                  <div className="text-xs font-semibold text-slate-700">Highlights</div>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
                     {active.highlights.map((h) => (
                       <li key={h}>{h}</li>
                     ))}
@@ -439,9 +439,9 @@ export default function LeadershipPage() {
                 </div>
               ) : null}
 
-              <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <div className="text-xs font-semibold text-neutral-200">Details</div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-neutral-300">
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
+                <div className="text-xs font-semibold text-slate-700">Details</div>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
                   {active.details.map((d) => (
                     <li key={d}>{d}</li>
                   ))}
@@ -452,7 +452,7 @@ export default function LeadershipPage() {
                 {active.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-neutral-300"
+                    className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-600"
                   >
                     {t}
                   </span>
@@ -462,7 +462,7 @@ export default function LeadershipPage() {
           ) : null}
 
           {/* Subtle “current cluster” label */}
-          <div className="pointer-events-none absolute left-[14%] top-[10%] text-xs text-neutral-300/80">
+          <div className="pointer-events-none absolute left-[14%] top-[10%] text-xs text-slate-600/80">
             Current
           </div>
         </div>

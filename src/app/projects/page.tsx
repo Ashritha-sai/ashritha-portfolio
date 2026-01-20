@@ -77,7 +77,7 @@ export default function ProjectsPage() {
     <div className="space-y-12">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
-        <p className="max-w-3xl text-neutral-300">
+        <p className="max-w-3xl text-slate-600">
           My work spans ML systems, perception pipelines, and real-time control. I also keep early
           builds here because they shaped how I think: ship, test, iterate, repeat.
         </p>
@@ -112,20 +112,20 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle: string })
   return (
     <div className="space-y-1">
       <h2 className="text-xl font-semibold">{title}</h2>
-      <p className="text-sm text-neutral-400">{subtitle}</p>
+      <p className="text-sm text-slate-500">{subtitle}</p>
     </div>
   );
 }
 
 function ProjectCard({ p }: { p: Project }) {
   const CardInner = (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20 hover:bg-white/[0.06]">
+    <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 transition hover:border-slate-300 hover:bg-white">
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">{p.title}</h3>
-          <p className="text-neutral-300">{p.desc}</p>
+          <p className="text-slate-600">{p.desc}</p>
 
-          <div className="mt-3 space-y-1 text-sm text-neutral-400">
+          <div className="mt-3 space-y-1 text-sm text-slate-500">
             <div>{p.date}</div>
             {p.stack ? <div>{p.stack}</div> : null}
           </div>
@@ -135,7 +135,7 @@ function ProjectCard({ p }: { p: Project }) {
               {p.tags.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-neutral-300"
+                  className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-600"
                 >
                   {t}
                 </span>
@@ -144,13 +144,13 @@ function ProjectCard({ p }: { p: Project }) {
           ) : null}
         </div>
 
-        <span className="text-neutral-400">
+        <span className="text-slate-400">
           {p.slug ? "→" : ""}
         </span>
       </div>
 
       {p.slug ? (
-        <p className="mt-5 text-sm text-neutral-400">Open →</p>
+        <p className="mt-5 text-sm text-slate-500">Open →</p>
       ) : null}
     </div>
   );

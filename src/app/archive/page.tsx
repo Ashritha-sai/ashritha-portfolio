@@ -144,14 +144,14 @@ export default function ArchivePage() {
     <div className="space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Archive</h1>
-        <p className="max-w-3xl text-neutral-300">
+        <p className="max-w-3xl text-slate-600">
           A timeline of milestones: fellowships, awards, research moments, and future work.
           Not an “achievements” page. More like a map of momentum.
         </p>
       </header>
 
-      <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-        <div className="mb-5 flex flex-wrap gap-2 text-xs text-neutral-300">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+        <div className="mb-5 flex flex-wrap gap-2 text-xs text-slate-600">
           <Pill label="Future" />
           <Pill label="Conference" />
           <Pill label="Fellowship" />
@@ -160,7 +160,7 @@ export default function ArchivePage() {
         </div>
 
         <div className="relative pl-6">
-          <div className="absolute left-[11px] top-0 h-full w-px bg-white/10" />
+          <div className="absolute left-[11px] top-0 h-full w-px bg-slate-300" />
           <div className="space-y-6">
             {milestones.map((m) => (
               <TimelineItem key={m.id} m={m} onOpen={() => setActive(m)} />
@@ -175,9 +175,9 @@ export default function ArchivePage() {
           title={active.title}
           subtitle={`${active.period} · ${active.category}`}
         >
-          {active.summary ? <p className="text-neutral-300">{active.summary}</p> : null}
+          {active.summary ? <p className="text-slate-600">{active.summary}</p> : null}
 
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-neutral-300">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-600">
             {active.details.map((d) => (
               <li key={d}>{d}</li>
             ))}
@@ -190,7 +190,7 @@ export default function ArchivePage() {
 
 function Pill({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1">
+    <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1">
       {label}
     </span>
   );
@@ -203,7 +203,7 @@ function TimelineItem({ m, onOpen }: { m: Milestone; onOpen: () => void }) {
     <button
       type="button"
       onClick={onOpen}
-      className="group relative grid w-full grid-cols-[24px_1fr] gap-4 rounded-xl border border-transparent p-3 text-left transition hover:border-white/10 hover:bg-white/[0.02]"
+      className="group relative grid w-full grid-cols-[24px_1fr] gap-4 rounded-xl border border-transparent p-3 text-left transition hover:border-slate-200 hover:bg-slate-100"
     >
       <div className="relative">
         <div className={`absolute left-[2px] top-[6px] h-4 w-4 rounded-full border ${dotClass}`} />
@@ -211,13 +211,13 @@ function TimelineItem({ m, onOpen }: { m: Milestone; onOpen: () => void }) {
 
       <div className="space-y-1">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <div className="text-sm font-semibold text-neutral-100">{m.title}</div>
-          <div className="text-xs text-neutral-400">{m.period}</div>
-          <span className="text-xs text-neutral-400">·</span>
-          <div className="text-xs text-neutral-400">{m.category}</div>
+          <div className="text-sm font-semibold text-slate-800">{m.title}</div>
+          <div className="text-xs text-slate-500">{m.period}</div>
+          <span className="text-xs text-slate-500">·</span>
+          <div className="text-xs text-slate-500">{m.category}</div>
         </div>
 
-        <div className="text-xs text-neutral-400 opacity-0 transition group-hover:opacity-100">
+        <div className="text-xs text-slate-500 opacity-0 transition group-hover:opacity-100">
           Open →
         </div>
       </div>
@@ -229,17 +229,17 @@ function TimelineItem({ m, onOpen }: { m: Milestone; onOpen: () => void }) {
 function categoryDot(category: Milestone["category"]) {
   switch (category) {
     case "Future":
-      return "border-white/30 bg-white/10";
+      return "border-slate-400 bg-slate-200";
     case "Conference":
-      return "border-pink-400/40 bg-pink-400/15";
+      return "border-pink-500 bg-pink-200";
     case "Fellowship":
-      return "border-emerald-400/40 bg-emerald-400/15";
+      return "border-emerald-500 bg-emerald-200";
     case "Hackathon":
-      return "border-indigo-400/40 bg-indigo-400/15";
+      return "border-indigo-500 bg-indigo-200";
     case "Exam":
-      return "border-sky-400/40 bg-sky-400/15";
+      return "border-sky-500 bg-sky-200";
     default:
-      return "border-white/20 bg-white/10";
+      return "border-slate-400 bg-slate-200";
   }
 }
 
@@ -256,25 +256,25 @@ function Modal({
 }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="w-full max-w-2xl rounded-2xl border border-white/10 bg-neutral-950 p-6 shadow-2xl"
+        className="w-full max-w-2xl rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-6">
           <div className="space-y-1">
             <h2 className="text-xl font-semibold">{title}</h2>
-            {subtitle ? <p className="text-sm text-neutral-400">{subtitle}</p> : null}
+            {subtitle ? <p className="text-sm text-slate-500">{subtitle}</p> : null}
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-neutral-200 hover:bg-white/[0.06]"
+            className="rounded-lg border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-700 hover:bg-white"
             aria-label="Close"
             title="Close"
           >

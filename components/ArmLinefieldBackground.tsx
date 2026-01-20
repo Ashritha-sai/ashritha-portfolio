@@ -175,10 +175,10 @@ export function ArmLinefieldBackground({
       // clear
       ctx.clearRect(0, 0, w, h);
 
-      // subtle vignette behind effect (helps readability)
+      // subtle vignette behind effect (helps readability) - light theme version
       const vignette = ctx.createRadialGradient(w * 0.55, h * 0.40, 0, w * 0.55, h * 0.40, Math.max(w, h) * 0.75);
-      vignette.addColorStop(0, `rgba(0,0,0,0)`);
-      vignette.addColorStop(1, `rgba(0,0,0,0.55)`);
+      vignette.addColorStop(0, `rgba(241,245,249,0)`);
+      vignette.addColorStop(1, `rgba(241,245,249,0.4)`);
       ctx.fillStyle = vignette;
       ctx.fillRect(0, 0, w, h);
 
@@ -203,7 +203,7 @@ export function ArmLinefieldBackground({
           if (i === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = "rgba(255,255,255,1)";
+        ctx.strokeStyle = "rgba(71,85,105,1)";
         ctx.stroke();
       }
 
@@ -236,7 +236,7 @@ export function ArmLinefieldBackground({
         ctx.beginPath();
         ctx.arc(px, py, 1.4, 0, Math.PI * 2);
 
-        ctx.fillStyle = "rgba(255,255,255,1)";
+        ctx.fillStyle = "rgba(71,85,105,1)";
         ctx.fill();
 
         // draw micro-line to next guide point (gives “lines forming” feel)
@@ -248,7 +248,7 @@ export function ArmLinefieldBackground({
         ctx.beginPath();
         ctx.moveTo(px, py);
         ctx.lineTo(lerp(px, nx, 0.22), lerp(py, ny, 0.22));
-        ctx.strokeStyle = "rgba(255,255,255,1)";
+        ctx.strokeStyle = "rgba(71,85,105,1)";
         ctx.stroke();
       }
 
@@ -267,8 +267,8 @@ export function ArmLinefieldBackground({
 return (
   <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
     <canvas ref={canvasRef} className="absolute inset-0" />
-    {/* very light readability mask, not a blackout */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/25" />
+    {/* very light readability mask for light theme */}
+    <div className="absolute inset-0 bg-gradient-to-b from-slate-100/10 via-slate-100/20 to-slate-100/35" />
   </div>
 );
 }

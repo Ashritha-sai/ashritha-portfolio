@@ -20,20 +20,20 @@ export default function Home() {
             Builder of embodied AI systems for human–machine interaction
             </h1>
 
-            <p className="max-w-2xl text-lg text-neutral-300">
+            <p className="max-w-2xl text-lg text-slate-600">
               I design and build end-to-end bio-mechatronic and embodied AI systems, spanning sensing, learning, and control.
               MSc Human & Biological Robotics, Imperial College London (2025–26).
             </p>
 
             {/* Building now */}
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-              <div className="text-sm font-semibold text-neutral-200">
+            <div className="mt-8 rounded-2xl border border-slate-200 bg-white/80 p-6">
+              <div className="text-sm font-semibold text-slate-700">
                 Building now
               </div>
 
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
                 <li>
-                  <span className="text-neutral-100">
+                  <span className="text-slate-800">
                     MSc project (Imperial College London):
                   </span>{" "}
                   neuromorphic EMG–IMU control for robotic augmentation under
@@ -41,14 +41,14 @@ export default function Home() {
                 </li>
 
                 <li>
-                  <span className="text-neutral-100">Human3D:</span>{" "}
+                  <span className="text-slate-800">Human3D:</span>{" "}
                   constraint-driven 3D reconstruction (manuscript under
                   submission to CVWW 2026; extended version in preparation for
                   CRV 2026).
                 </li>
 
                 <li>
-                  <span className="text-neutral-100">Active Sensing under Uncertanity:</span>{" "}
+                  <span className="text-slate-800">Active Sensing under Uncertanity:</span>{" "}
                   Reinforcement Learning in Uncertain Biomedical Settings.
                 </li>
               </ul>
@@ -56,22 +56,22 @@ export default function Home() {
 
             {/* Highlights + Principles */}
             <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <div className="text-sm font-semibold text-neutral-200">
+              <div className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+                <div className="text-sm font-semibold text-slate-700">
                   Highlights
                 </div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
                   <li>Smart India Hackathon winner (hardware edition)</li>
                   <li>Built OpenSim IK/dynamics pipeline for biomech features</li>
                   <li>Monte Carlo synthetic dataset generation + ML regression thesis</li>
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <div className="text-sm font-semibold text-neutral-200">
+              <div className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+                <div className="text-sm font-semibold text-slate-700">
                   Principles
                 </div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
                   <li>Reliability over demos</li>
                   <li>Explicit assumptions</li>
                   <li>End-to-end ownership</li>
@@ -87,14 +87,14 @@ export default function Home() {
             <div className="flex items-end justify-between gap-4">
               <div>
                 <h2 className="text-xl font-semibold">Featured work</h2>
-                <p className="mt-1 text-sm text-neutral-400">
+                <p className="mt-1 text-sm text-slate-500">
                   Two projects that best represent how I build: systems,
                   constraints, iteration.
                 </p>
               </div>
               <Link
                 href="/projects"
-                className="text-sm text-neutral-300 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/40"
+                className="text-sm text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 hover:decoration-slate-400"
               >
                 View all projects
               </Link>
@@ -119,7 +119,7 @@ export default function Home() {
         <FadeIn>
           <section className="space-y-3">
             <h2 className="text-xl font-semibold">How I build</h2>
-            <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+            <ul className="list-disc space-y-2 pl-5 text-slate-600">
               <li>Start from constraints and failure modes, not the model.</li>
               <li>Build the smallest end-to-end system first, then iterate.</li>
               <li>Make assumptions explicit and easy to change.</li>
@@ -144,19 +144,19 @@ function FeatureCard({
   return (
     <Link
       href={href}
-      className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20 hover:bg-white/[0.06]"
+      className="group rounded-2xl border border-slate-200 bg-white/80 p-6 transition hover:border-slate-300 hover:bg-white"
     >
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">{title}</h3>
-          <p className="text-neutral-300">{subtitle}</p>
+          <p className="text-slate-600">{subtitle}</p>
         </div>
-        <span className="text-neutral-400 transition group-hover:translate-x-1 group-hover:text-neutral-200">
+        <span className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-slate-700">
           →
         </span>
       </div>
-      <div className="mt-4 h-px w-full bg-gradient-to-r from-white/0 via-white/10 to-white/0" />
-      <p className="mt-4 text-sm text-neutral-400">
+      <div className="mt-4 h-px w-full bg-gradient-to-r from-slate-100/0 via-slate-200 to-slate-100/0" />
+      <p className="mt-4 text-sm text-slate-500">
         Read the build notes, architecture decisions, and outcomes.
       </p>
     </Link>

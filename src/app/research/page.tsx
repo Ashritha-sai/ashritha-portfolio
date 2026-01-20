@@ -3,9 +3,9 @@ export default function ResearchPage() {
     <div className="space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Research</h1>
-        <p className="max-w-3xl text-neutral-300">
+        <p className="max-w-3xl text-slate-600">
           Work across biomechanics, signal processing, and ML systems. I focus on building pipelines
-          that expose assumptions and failure modes, and I like projects where the “messy middle”
+          that expose assumptions and failure modes, and I like projects where the "messy middle"
           (data + constraints + implementation) matters.
         </p>
       </header>
@@ -14,7 +14,7 @@ export default function ResearchPage() {
         title="IIT Jodhpur — Physics-informed ML (May 2025 – Aug 2025)"
         subtitle="Filtering, stability analysis, and feature extraction for trajectory consistency"
       >
-        <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
           <li>
             Implemented Kalman + complementary filtering to suppress drift/noise in trajectory tracking, improving temporal consistency under variation.
           </li>
@@ -38,7 +38,7 @@ export default function ResearchPage() {
         title="IIT Kanpur — Human-in-the-loop Systems (Oct 2024 – Apr 2025)"
         subtitle="OpenSim inverse kinematics + dynamics pipeline and biomechanical feature engineering"
       >
-        <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
           <li>
             Built inverse kinematics + inverse dynamics pipeline using OpenSim to estimate joint angles, torques, and COM trajectories.
           </li>
@@ -57,12 +57,12 @@ export default function ResearchPage() {
           ]}
         />
       </Card>
-      <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-6">
         <h3 className="text-lg font-semibold">
-          Neuroscience Lab Work <span className="text-neutral-400">(Oct 2023 – Apr 2024)</span>
+          Neuroscience Lab Work <span className="text-slate-500">(Oct 2023 – Apr 2024)</span>
         </h3>
 
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
           <li>
             Supporting ongoing neuroscience research with hands-on cell culture and experimental workflows.
           </li>
@@ -76,9 +76,9 @@ export default function ResearchPage() {
         title="IASc–INSA–NASI SRFP — Skin scaffold fabrication study (May 2024 – Jul 2024)"
         subtitle="Comparative in vitro analysis of scaffold fabrication techniques for skin graft applications"
       >
-        <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
           <li>
-            Worked on: <span className="text-neutral-100 font-medium">
+            Worked on: <span className="text-slate-800 font-medium">
               “Comparative in vitro Analysis of Scaffold Fabrication Techniques for Skin Graft Applications using Chitosan and Polyvinyl Alcohol”
             </span>
           </li>
@@ -104,7 +104,7 @@ export default function ResearchPage() {
         title="JNCASR SRFP — Drosophila microbiome + development study (Jun 2023 – Aug 2023)"
         subtitle="Developmental and morphological analysis under dietary variation; wet-lab standardisation"
       >
-        <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
           <li>
             Studied the effect of feeding different rice varieties to <span className="italic">Drosophila melanogaster</span> and measured development rate from egg to adult.
           </li>
@@ -139,9 +139,9 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white/80 p-6">
       <h2 className="text-lg font-semibold">{title}</h2>
-      {subtitle ? <p className="mt-1 text-sm text-neutral-400">{subtitle}</p> : null}
+      {subtitle ? <p className="mt-1 text-sm text-slate-500">{subtitle}</p> : null}
       <div className="mt-4">{children}</div>
     </section>
   );
@@ -149,11 +149,11 @@ function Card({
 
 function Meta({ items }: { items: Array<[string, string]> }) {
   return (
-    <div className="mt-5 grid gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm">
+    <div className="mt-5 grid gap-2 rounded-xl border border-slate-200 bg-slate-100 p-4 text-sm">
       {items.map(([k, v]) => (
         <div key={k} className="flex flex-col gap-1 md:flex-row md:gap-3">
-          <div className="w-28 flex-shrink-0 text-neutral-400">{k}</div>
-          <div className="text-neutral-300">{v}</div>
+          <div className="w-28 flex-shrink-0 text-slate-500">{k}</div>
+          <div className="text-slate-600">{v}</div>
         </div>
       ))}
     </div>

@@ -3,7 +3,7 @@ export default function ActiveSensingPage() {
     <div className="space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Active Sensing under Uncertanity</h1>
-        <p className="text-neutral-300">
+        <p className="text-slate-600">
           Reinforcement Learning & Biomedical Simulation
         </p>
       </header>
@@ -13,7 +13,7 @@ export default function ActiveSensingPage() {
       </Section>
 
       <Section title="What I built">
-        <ul className="list-disc space-y-2 pl-5 text-neutral-300">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
           <li>Designed a Monte Carlo–driven synthetic environment modelling stochastic skin optics with physiologically grounded variability.</li>
           <li>Trained and analysed reinforcement learning policies for probe-efficient, robust inference under partial observability.</li>
           <li>Ongoing work exploring policy-dependent identifiability and information-efficient sensing strategies for biomedical applications.</li>
@@ -21,13 +21,13 @@ export default function ActiveSensingPage() {
       </Section>
 
       <Section title="Stack">
-        <p className="text-neutral-300">
+        <p className="text-slate-600">
             Monte Carlo simulation · reinforcement learning · partially observable environments · stochastic biomedical modelling.
         </p>
       </Section>
 
       <Section title="Outcome">
-        <p className="text-neutral-300">
+        <p className="text-slate-600">
         Established a simulation and evaluation framework for analysing policy-dependent identifiability and information-efficient sensing strategies.
         </p>
       </Section>
@@ -37,7 +37,7 @@ export default function ActiveSensingPage() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white/80 p-6">
       <h2 className="text-lg font-semibold">{title}</h2>
       <div className="mt-3">{children}</div>
     </section>
