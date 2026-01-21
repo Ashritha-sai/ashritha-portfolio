@@ -1,23 +1,33 @@
+"use client";
+
 import Link from "next/link";
-import { FadeIn } from "@/components/FadeIn";
-import { ArmLinefieldBackground } from "@/components/ArmLinefieldBackground";
+import { ScrollFade } from "@/components/ScrollFade";
+import { TypedText } from "@/components/TypedText";
+import { useRipple, RippleContainer } from "@/components/RippleEffect";
+import { SkillsRadar } from "@/components/SkillsRadar";
 
-
+const skills = [
+  { name: "ML Systems", level: 85, category: "technical" },
+  { name: "Signal Processing", level: 80, category: "technical" },
+  { name: "Robotics", level: 75, category: "technical" },
+  { name: "Python", level: 90, category: "technical" },
+  { name: "Research", level: 85, category: "soft" },
+  { name: "System Design", level: 80, category: "technical" },
+];
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      {/* Animated background */}
-      <ArmLinefieldBackground opacity={0.55} density={1} speed={1} />
-
-
-
       {/* Foreground content */}
       <div className="relative z-10 space-y-16">
-        <FadeIn>
+        <ScrollFade>
           <header className="space-y-6 pt-6">
             <h1 className="text-5xl font-semibold tracking-tight">
-            Builder of embodied AI systems for human–machine interaction
+              <TypedText
+                text="Builder of embodied AI systems for human–machine interaction"
+                speed={30}
+                delay={300}
+              />
             </h1>
 
             <p className="max-w-2xl text-lg text-slate-600">
@@ -26,7 +36,7 @@ export default function Home() {
             </p>
 
             {/* Building now */}
-            <div className="mt-8 rounded-2xl border border-slate-200 bg-white/80 p-6">
+            <div className="mt-8 animate-breathe rounded-2xl border border-slate-200 bg-white/80 p-6">
               <div className="text-sm font-semibold text-slate-700">
                 Building now
               </div>
@@ -56,7 +66,7 @@ export default function Home() {
 
             {/* Highlights + Principles */}
             <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+              <div className="animate-breathe rounded-2xl border border-slate-200 bg-white/80 p-6" style={{ animationDelay: "0.5s" }}>
                 <div className="text-sm font-semibold text-slate-700">
                   Highlights
                 </div>
@@ -67,7 +77,7 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+              <div className="animate-breathe rounded-2xl border border-slate-200 bg-white/80 p-6" style={{ animationDelay: "1s" }}>
                 <div className="text-sm font-semibold text-slate-700">
                   Principles
                 </div>
@@ -79,10 +89,21 @@ export default function Home() {
               </div>
             </div>
           </header>
-        </FadeIn>
+        </ScrollFade>
+
+        {/* Skills Radar */}
+        <ScrollFade>
+          <section className="space-y-4">
+            <h2 className="text-xl font-semibold">Core Skills</h2>
+            <p className="text-sm text-slate-500">Hover over points to explore</p>
+            <div className="flex justify-center">
+              <SkillsRadar skills={skills} size={320} />
+            </div>
+          </section>
+        </ScrollFade>
 
         {/* Featured work */}
-        <FadeIn>
+        <ScrollFade>
           <section className="space-y-4">
             <div className="flex items-end justify-between gap-4">
               <div>
@@ -113,10 +134,10 @@ export default function Home() {
               />
             </div>
           </section>
-        </FadeIn>
+        </ScrollFade>
 
         {/* How I build */}
-        <FadeIn>
+        <ScrollFade>
           <section className="space-y-3">
             <h2 className="text-xl font-semibold">How I build</h2>
             <ul className="list-disc space-y-2 pl-5 text-slate-600">
@@ -126,7 +147,7 @@ export default function Home() {
               <li>Prefer tools and designs that reduce operational drag.</li>
             </ul>
           </section>
-        </FadeIn>
+        </ScrollFade>
       </div>
     </div>
   );
@@ -141,11 +162,15 @@ function FeatureCard({
   subtitle: string;
   href: string;
 }) {
+  const { ripples, addRipple } = useRipple();
+
   return (
     <Link
       href={href}
-      className="group rounded-2xl border border-slate-200 bg-white/80 p-6 transition hover:border-slate-300 hover:bg-white"
+      onClick={addRipple}
+      className="group relative animate-breathe overflow-hidden rounded-2xl border border-slate-200 bg-white/80 p-6 transition hover:border-slate-300 hover:bg-white"
     >
+      <RippleContainer ripples={ripples} />
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">{title}</h3>

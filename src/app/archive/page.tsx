@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ScrollFade } from "@/components/ScrollFade";
+import { useRipple, RippleContainer } from "@/components/RippleEffect";
 
 type Milestone = {
   id: string;
@@ -14,7 +16,6 @@ type Milestone = {
 export default function ArchivePage() {
   const milestones = useMemo<Milestone[]>(
     () => [
-      // ===== FUTURE (TOP) =====
       {
         id: "future-human3d-cvww-crv",
         title: "Human3D Publications",
@@ -28,16 +29,13 @@ export default function ArchivePage() {
           "Artifacts: paper + demo + cleaned pipeline notes (where possible).",
         ],
       },
-      
-
-      // ===== CONFERENCES (ACTUAL) =====
       {
         id: "conf-surc-2025",
         title: "Scientific Undergraduate Research Conference",
         period: "May 2025",
         category: "Conference",
         summary:
-          "Presented: “Machine Learning-Based Non-Invasive Diagnostic Device for Physiological Signal Analysis.”",
+          'Presented: "Machine Learning-Based Non-Invasive Diagnostic Device for Physiological Signal Analysis."',
         details: [
           "Presented the thesis direction and system framing: signal → features → prediction under noise/low-data constraints.",
           "Focused on practical ML modelling and validation decisions.",
@@ -50,14 +48,12 @@ export default function ArchivePage() {
         period: "Nov 2024",
         category: "Conference",
         summary:
-          "Presented: “In vitro Analysis of Scaffold Fabrication Techniques for Skin Graft Applications using Chitosan and Poly Vinyl Alcohol.”",
+          'Presented: "In vitro Analysis of Scaffold Fabrication Techniques for Skin Graft Applications using Chitosan and Poly Vinyl Alcohol."',
         details: [
           "Presented comparative scaffold fabrication results and justification for freeze drying as optimal in this context.",
           "Communicated experimental design choices and outcomes clearly to a broader audience.",
         ],
       },
-
-      // ===== FELLOWSHIPS / RESEARCH MILESTONES =====
       {
         id: "srfp-iacs-2024",
         title: "Science Academies Summer Research Fellowship (IASc–INSA–NASI SRFP)",
@@ -84,8 +80,6 @@ export default function ArchivePage() {
           "Learned wet-lab workflows: PCR and electrophoresis; strengthened experimental execution discipline.",
         ],
       },
-
-      // ===== HACKATHON / BUILD =====
       {
         id: "sih-2023",
         title: "Internal Smart INDIA Hackathon – 1st Prize",
@@ -99,71 +93,95 @@ export default function ArchivePage() {
           "Related build: adaptive prosthesis control project (see Projects).",
         ],
       },
-
-      // ===== SCHOLARSHIP / EXAMS / EARLY MILESTONES =====
       {
         id: "gat-2021",
         title: "GAT – GITAM Admission Test (Rank 210 / 1000)",
         period: "2021",
         category: "Exam",
-        summary:
-          "Ranked 210 out of 1000; awarded 75% scholarship",
-        details: [
-          "Scholarship: 75% tuition support through undergraduate program.",
-        ],
+        summary: "Ranked 210 out of 1000; awarded 75% scholarship",
+        details: ["Scholarship: 75% tuition support through undergraduate program."],
       },
-          {
+      {
         id: "science-talent-2015",
         title: "State & National-level Science Talent Search Examinations",
         period: "2015",
         category: "Exam",
         summary: "",
-        details: [
-          "Recognised at state/national level in science talent search examinations.",
-        ],
+        details: ["Recognised at state/national level in science talent search examinations."],
       },
-
       {
-  id: "math-talent-2014",
-  title: "National Mathematics Talent Contest",
-  period: "2014",
-  category: "Exam",
-  summary: "",
-  details: [
-    "Participated/recognised in a national-level mathematics contest.",
-  ],
-},
-
+        id: "math-talent-2014",
+        title: "National Mathematics Talent Contest",
+        period: "2014",
+        category: "Exam",
+        summary: "",
+        details: ["Participated/recognised in a national-level mathematics contest."],
+      },
     ],
     []
   );
 
   const [active, setActive] = useState<Milestone | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [lineHeight, setLineHeight] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const scrollProgress = Math.max(
+        0,
+        Math.min(1, (viewportHeight * 0.6 - rect.top) / rect.height)
+      );
+      setLineHeight(scrollProgress * 100);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="space-y-10">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Archive</h1>
-        <p className="max-w-3xl text-slate-600">
-          A timeline of milestones: fellowships, awards, research moments, and future work.
-          Not an “achievements” page. More like a map of momentum.
-        </p>
-      </header>
+      <ScrollFade>
+        <header className="space-y-3">
+          <h1 className="text-3xl font-semibold tracking-tight">Archive</h1>
+          <p className="max-w-3xl text-slate-600">
+            A timeline of milestones: fellowships, awards, research moments, and future work.
+            Not an "achievements" page. More like a map of momentum.
+          </p>
+        </header>
+      </ScrollFade>
 
-      <section className="rounded-2xl border border-slate-200 bg-white/80 p-6">
+      <section className="animate-breathe rounded-2xl border border-slate-200 bg-white/80 p-6">
         <div className="mb-5 flex flex-wrap gap-2 text-xs text-slate-600">
-          <Pill label="Future" />
-          <Pill label="Conference" />
-          <Pill label="Fellowship" />
-          <Pill label="Hackathon" />
-          <Pill label="Exam" />
+          <Pill label="Future" color="slate" />
+          <Pill label="Conference" color="pink" />
+          <Pill label="Fellowship" color="emerald" />
+          <Pill label="Hackathon" color="indigo" />
+          <Pill label="Exam" color="sky" />
         </div>
 
-        <div className="relative pl-6">
-          <div className="absolute left-[11px] top-0 h-full w-px bg-slate-300" />
-          <div className="space-y-6">
-            {milestones.map((m) => (
-              <TimelineItem key={m.id} m={m} onOpen={() => setActive(m)} />
+        <div ref={containerRef} className="relative pl-8">
+          {/* Static background line */}
+          <div className="absolute left-[11px] top-0 h-full w-0.5 bg-slate-200" />
+          {/* Animated progress line */}
+          <div
+            className="absolute left-[11px] top-0 w-0.5 bg-gradient-to-b from-indigo-500 via-emerald-500 to-pink-500 transition-all duration-150"
+            style={{ height: `${lineHeight}%` }}
+          />
+
+          <div className="space-y-2">
+            {milestones.map((m, index) => (
+              <TimelineItem
+                key={m.id}
+                m={m}
+                onOpen={() => setActive(m)}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -176,7 +194,6 @@ export default function ArchivePage() {
           subtitle={`${active.period} · ${active.category}`}
         >
           {active.summary ? <p className="text-slate-600">{active.summary}</p> : null}
-
           <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-600">
             {active.details.map((d) => (
               <li key={d}>{d}</li>
@@ -188,48 +205,98 @@ export default function ArchivePage() {
   );
 }
 
-function Pill({ label }: { label: string }) {
+function Pill({ label, color }: { label: string; color: string }) {
+  const colors: Record<string, string> = {
+    slate: "border-slate-300 bg-slate-100 text-slate-600",
+    pink: "border-pink-300 bg-pink-100 text-pink-700",
+    emerald: "border-emerald-300 bg-emerald-100 text-emerald-700",
+    indigo: "border-indigo-300 bg-indigo-100 text-indigo-700",
+    sky: "border-sky-300 bg-sky-100 text-sky-700",
+  };
+
   return (
-    <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1">
+    <span className={`rounded-full border px-3 py-1 ${colors[color] || colors.slate}`}>
       {label}
     </span>
   );
 }
 
-function TimelineItem({ m, onOpen }: { m: Milestone; onOpen: () => void }) {
+function TimelineItem({
+  m,
+  onOpen,
+  index,
+}: {
+  m: Milestone;
+  onOpen: () => void;
+  index: number;
+}) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const { ripples, addRipple } = useRipple();
   const dotClass = categoryDot(m.category);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3, rootMargin: "-10% 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <button
+      ref={ref}
       type="button"
-      onClick={onOpen}
-      className="group relative grid w-full grid-cols-[24px_1fr] gap-4 rounded-xl border border-transparent p-3 text-left transition hover:border-slate-200 hover:bg-slate-100"
+      onClick={(e) => {
+        addRipple(e);
+        onOpen();
+      }}
+      className="group relative grid w-full grid-cols-[24px_1fr] gap-4 overflow-hidden rounded-xl border border-transparent p-3 text-left transition-all duration-500 hover:border-slate-200 hover:bg-slate-100"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateX(0)" : "translateX(-20px)",
+        transitionDelay: `${index * 80}ms`,
+      }}
     >
+      <RippleContainer ripples={ripples} />
       <div className="relative">
-        <div className={`absolute left-[2px] top-[6px] h-4 w-4 rounded-full border ${dotClass}`} />
+        <div
+          className={`absolute left-[2px] top-[6px] h-4 w-4 rounded-full border-2 transition-all duration-500 ${dotClass} ${
+            isVisible ? "scale-100" : "scale-0"
+          }`}
+          style={{ transitionDelay: `${index * 80 + 200}ms` }}
+        />
       </div>
 
       <div className="space-y-1">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <div className="text-sm font-semibold text-slate-800">{m.title}</div>
           <div className="text-xs text-slate-500">{m.period}</div>
-          <span className="text-xs text-slate-500">·</span>
+          <span className="text-xs text-slate-400">·</span>
           <div className="text-xs text-slate-500">{m.category}</div>
         </div>
 
         <div className="text-xs text-slate-500 opacity-0 transition group-hover:opacity-100">
-          Open →
+          Click for details →
         </div>
       </div>
     </button>
   );
 }
 
-
 function categoryDot(category: Milestone["category"]) {
   switch (category) {
     case "Future":
-      return "border-slate-400 bg-slate-200";
+      return "border-slate-400 bg-slate-100";
     case "Conference":
       return "border-pink-500 bg-pink-200";
     case "Fellowship":
@@ -256,25 +323,26 @@ function Modal({
 }) {
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 p-6 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="w-full max-w-2xl rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
+        className="w-full max-w-2xl animate-breathe rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
+        style={{ animationDuration: "6s" }}
       >
         <div className="flex items-start justify-between gap-6">
           <div className="space-y-1">
-            <h2 className="text-xl font-semibold">{title}</h2>
+            <h2 className="text-xl font-semibold text-slate-800">{title}</h2>
             {subtitle ? <p className="text-sm text-slate-500">{subtitle}</p> : null}
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-700 hover:bg-white"
+            className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-700 transition hover:bg-slate-100"
             aria-label="Close"
             title="Close"
           >

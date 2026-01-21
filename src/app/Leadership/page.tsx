@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useCallback } from "react";
 
 type Category = "Now" | "National" | "Imperial" | "Service" | "Student" | "Volunteering";
 
@@ -334,21 +334,100 @@ export default function LeadershipPage() {
   const active = useMemo(() => nodes.find((n) => n.id === activeId) ?? null, [nodes, activeId]);
   const byId = useMemo(() => Object.fromEntries(nodes.map((n) => [n.id, n])), [nodes]);
 
+  // Pan and zoom state
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest("button")) return;
+    setIsDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY, panX: pan.x, panY: pan.y };
+  }, [pan]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStart.current.x;
+    const dy = e.clientY - dragStart.current.y;
+    setPan({ x: dragStart.current.panX + dx, y: dragStart.current.panY + dy });
+  }, [isDragging]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    setScale((s) => Math.min(2.5, Math.max(0.5, s * delta)));
+  }, []);
+
+  const resetView = useCallback(() => {
+    setPan({ x: 0, y: 0 });
+    setScale(1);
+  }, []);
+
   return (
     <div className="space-y-8">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Leadership</h1>
         <p className="max-w-3xl text-slate-600">
-          Click a node. Current roles are highlighted.
+          Drag to pan, scroll to zoom, click a node for details. Current roles are highlighted.
         </p>
       </header>
 
-      {/* IMPORTANT: overflow-visible so popover never gets clipped */}
-      <section className="relative rounded-2xl border border-slate-200 bg-white/80 p-6 overflow-visible">
+      {/* IMPORTANT: overflow-hidden for zoom/pan, popover handled separately */}
+      <section className="relative rounded-2xl border border-slate-200 bg-white/80 p-6 overflow-hidden">
         {/* NEW: technical texture background */}
         <TechnicalTextureBackground />
 
-        <div className="relative z-10 h-[680px] w-full overflow-visible">
+        {/* Zoom/Pan controls */}
+        <div className="absolute right-4 top-4 z-20 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setScale((s) => Math.min(2.5, s * 1.2))}
+            className="rounded-lg border border-slate-200 bg-white/90 px-3 py-1.5 text-sm text-slate-700 transition hover:bg-slate-100"
+            title="Zoom in"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            onClick={() => setScale((s) => Math.max(0.5, s * 0.8))}
+            className="rounded-lg border border-slate-200 bg-white/90 px-3 py-1.5 text-sm text-slate-700 transition hover:bg-slate-100"
+            title="Zoom out"
+          >
+            −
+          </button>
+          <button
+            type="button"
+            onClick={resetView}
+            className="rounded-lg border border-slate-200 bg-white/90 px-3 py-1.5 text-xs text-slate-700 transition hover:bg-slate-100"
+            title="Reset view"
+          >
+            Reset
+          </button>
+          <span className="ml-2 text-xs text-slate-500">{Math.round(scale * 100)}%</span>
+        </div>
+
+        <div
+          ref={containerRef}
+          className="relative z-10 h-[680px] w-full cursor-grab active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onWheel={handleWheel}
+        >
+          <div
+            className="h-full w-full transition-transform duration-75"
+            style={{
+              transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})`,
+              transformOrigin: "center center",
+            }}
+          >
           {/* Edges (SVG) */}
           <svg className="pointer-events-none absolute inset-0 h-full w-full">
             {edges.map(([a, b]) => {
@@ -398,74 +477,76 @@ export default function LeadershipPage() {
             );
           })}
 
-          {/* Popover anchored near the active node */}
-          {active ? (
-            <div
-              className="absolute z-30 w-[min(520px,calc(100%-24px))] rounded-2xl border border-slate-200 bg-white/95 p-5 backdrop-blur shadow-lg"
-              style={{
-                left: `min(calc(${active.x}% + 22px), calc(100% - 520px))`,
-                top: `calc(${active.y}% - 20px)`,
-              }}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <span className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] ${badge(active.category)}`}>
-                    {active.category}
-                  </span>
-
-                  <div className="mt-2 text-base font-semibold text-slate-800">
-                    {active.title} — {active.org}
-                  </div>
-                  <div className="mt-1 text-xs text-slate-500">{active.period}</div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveId(null)}
-                  className="rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-700 transition hover:bg-white"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {active.highlights?.length ? (
-                <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
-                  <div className="text-xs font-semibold text-slate-700">Highlights</div>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
-                    {active.highlights.map((h) => (
-                      <li key={h}>{h}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
-                <div className="text-xs font-semibold text-slate-700">Details</div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
-                  {active.details.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {active.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-600"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ) : null}
-
-          {/* Subtle “current cluster” label */}
+          {/* Subtle "current cluster" label */}
           <div className="pointer-events-none absolute left-[14%] top-[10%] text-xs text-slate-600/80">
             Current
           </div>
+          </div>
         </div>
+
+        {/* Popover - outside transform so it doesn't zoom/pan */}
+        {active ? (
+          <div
+            className="absolute z-30 w-[min(420px,calc(100%-48px))] rounded-2xl border border-slate-200 bg-white/95 p-5 backdrop-blur shadow-lg"
+            style={{
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] ${badge(active.category)}`}>
+                  {active.category}
+                </span>
+
+                <div className="mt-2 text-base font-semibold text-slate-800">
+                  {active.title} — {active.org}
+                </div>
+                <div className="mt-1 text-xs text-slate-500">{active.period}</div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setActiveId(null)}
+                className="rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-700 transition hover:bg-white"
+              >
+                ✕
+              </button>
+            </div>
+
+            {active.highlights?.length ? (
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
+                <div className="text-xs font-semibold text-slate-700">Highlights</div>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
+                  {active.highlights.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <div className="mt-4 rounded-2xl border border-slate-200 bg-white/80 p-4">
+              <div className="text-xs font-semibold text-slate-700">Details</div>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-600">
+                {active.details.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {active.tags.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-600"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </section>
     </div>
   );

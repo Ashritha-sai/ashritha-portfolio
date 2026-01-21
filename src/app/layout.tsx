@@ -1,7 +1,7 @@
 import "./globals.css";
-import Link from "next/link";
 import { PageTransition } from "@/components/PageTransition";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { Nav } from "@/components/Nav";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,20 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-slate-100 text-slate-800">
         <ParticleBackground />
         <SiteBackground />
-        <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/70 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-            <Link href="/" className="font-semibold tracking-tight text-slate-800">
-              Ashritha Sai Mani Chundru
-            </Link>
-            <div className="flex gap-6 text-sm text-slate-600">
-              <Link className="hover:text-slate-900" href="/projects">Projects</Link>
-              <Link className="hover:text-slate-900" href="/research">Research</Link>
-              <Link className="hover:text-slate-900" href="/Leadership">Leadership</Link>
-              <Link className="hover:text-slate-900" href="/archive">Archive</Link>
-              <Link className="hover:text-slate-900" href="/contact">Contact</Link>
-            </div>
-          </div>
-        </nav>
+        <Nav />
 
         <main className="mx-auto max-w-5xl px-6 py-12">
           <PageTransition>{children}</PageTransition>
