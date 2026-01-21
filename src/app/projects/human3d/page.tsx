@@ -8,15 +8,22 @@ export default function Human3DPage() {
         </p>
       </header>
 
-      <Section title="Problem">
-        Reconstructing usable 3D human representations from a single image requires combining depth, keypoints, segmentation, and a body model, while handling model disagreement and failure modes.
+      <Section title="Challenge">
+        Reconstructing usable 3D human representations from a single image requires combining depth, keypoints, segmentation, and a body model—while handling model disagreement, occlusion, and failure modes gracefully.
       </Section>
 
-      <Section title="What I built">
+      <Section title="Approach">
         <ul className="list-disc space-y-2 pl-5 text-slate-600">
-          <li>Integrated MiDaS depth, keypoints, and SAM/CLIP segmentation into a single pipeline.</li>
-          <li>SMPL/SMPL-X fitting and rendering workflow using PyTorch3D; Blender for evaluation.</li>
-          <li>Work-in-progress: differentiable biomechanical constraints (joint limits, bone length, COM stability).</li>
+          <li>Integrated MiDaS depth, keypoint detection, and SAM/CLIP segmentation into a unified pipeline with explicit failure handling.</li>
+          <li>Built SMPL/SMPL-X fitting and rendering workflow using PyTorch3D; Blender for ground-truth evaluation.</li>
+          <li>Work-in-progress: differentiable biomechanical constraints (joint limits, bone length, COM stability) to enforce physical plausibility.</li>
+        </ul>
+      </Section>
+
+      <Section title="Key Decisions">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
+          <li><strong>Why constraints over end-to-end learning?</strong> Pure learning approaches fail silently on out-of-distribution poses; explicit constraints surface failures and enable debugging.</li>
+          <li><strong>Why multiple perception modules?</strong> Each module fails differently—combining them with explicit disagreement detection improves robustness.</li>
         </ul>
       </Section>
 
@@ -26,10 +33,12 @@ export default function Human3DPage() {
         </p>
       </Section>
 
-      <Section title="Outcome">
-        <p className="text-slate-600">
-          Built a reproducible end-to-end pipeline and a framework for testing constraints that improve physical plausibility under noisy perception outputs.
-        </p>
+      <Section title="Results">
+        <ul className="list-disc space-y-2 pl-5 text-slate-600">
+          <li>Reproducible end-to-end pipeline with documented failure modes.</li>
+          <li>Framework for testing biomechanical constraints that improve physical plausibility under noisy perception.</li>
+          <li>Manuscript under submission to CVWW 2026; extended version in preparation for CRV 2026.</li>
+        </ul>
       </Section>
     </div>
   );
