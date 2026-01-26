@@ -10,13 +10,20 @@ type Project = {
 };
 
 const featured: Project[] = [
-  
+
   {
     slug: "MSc Project",
     title: "Neuromorphic Control for Robotic Augmentation",
     desc: "EMG–IMU Fusion",
     date: "Jan 2026 – Present",
     tags: ["Bio-Signal Processing", "Sensor Fusion", "Continuous Control", "Human-Robot Interaction", "Neuromorphic Principles",],
+  },
+  {
+    slug: "rlaif",
+    title: "RL-Driven Vision Optimization (RLAIF)",
+    desc: "Automated feedback pipeline using PPO to fine-tune vision models, reducing human annotation needs by 95% with closed-loop autonomous improvement.",
+    date: "Dec 2025 – Present",
+    tags: ["reinforcement learning", "PPO", "computer vision", "RLAIF", "MLOps"],
   },
   {
     slug: "Active Sensing",
@@ -57,6 +64,20 @@ const featured: Project[] = [
 
 const earlyBuilds: Project[] = [
   {
+    title: "Geospatial Intelligence & Satellite Mapping",
+    desc: "Built a full GIS mapping pipeline to convert unstructured IRS satellite imagery into structured coordinate maps. Ingested and cleaned raw multispectral data, correcting for atmospheric noise and sensor artifacts.",
+    stack: "GIS · Remote Sensing · Multispectral Data · Coordinate Systems · Data Pipelines",
+    date: "June 2024 – Nov 2024",
+    tags: ["data", "geospatial", "pipelines"],
+  },
+  {
+    title: "Electric Vehicle Control System Design",
+    desc: "Designed and tuned PID controllers in MATLAB/Simulink to manage motor speed and torque under varying load conditions. Modelled electric propulsion physics, simulating battery discharge curves and motor response to optimize energy efficiency.",
+    stack: "MATLAB · Simulink · PID Control · Physics Simulation · Control Systems",
+    date: "Oct 2023 – May 2024",
+    tags: ["control", "simulation", "systems"],
+  },
+  {
     title: "Automatic paper crusher for sustainable waste disposal",
     desc: "Built from scratch as a team project: sensor-driven automation, embedded coding, and mechanical analysis for safe, repeatable crushing.",
     stack: "Sensors · Embedded coding · Mechanical design/analysis",
@@ -78,7 +99,7 @@ export default function ProjectsPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
         <p className="max-w-3xl text-slate-600">
-          My work spans ML systems, perception pipelines, and real-time control. I also keep early
+          My work spans robotics, biology-aware ML, computer vision, and data-driven systems. I also keep early
           builds here because they shaped how I think: ship, test, iterate, repeat.
         </p>
       </header>

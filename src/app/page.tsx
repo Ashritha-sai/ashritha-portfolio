@@ -17,18 +17,18 @@ export default function Home() {
         <ScrollFade>
           <header className="space-y-6 pt-6">
             <p className="text-sm font-medium tracking-wide text-indigo-600">
-              Where biology meets robotics meets learning
+              Robotics + Biology + Computer Vision + ML/AI + Data
             </p>
             <h1 className="text-5xl font-semibold tracking-tight">
               <TypedText
-                text="Biomechatronics engineer building ML systems for human augmentation"
+                text="Building intelligent systems where biology meets machine learning"
                 speed={30}
                 delay={300}
               />
             </h1>
 
             <p className="max-w-2xl text-lg text-slate-600">
-              I design end-to-end systems at the intersection of robotics, biosignal processing, and machine learning.
+              I design end-to-end systems at the intersection of robotics, biological sensing, computer vision, ML, and data pipelines.
               MSc Human & Biological Robotics, Imperial College London (2025–26).
             </p>
 
@@ -48,6 +48,12 @@ export default function Home() {
                 </li>
 
                 <li>
+                  <span className="text-slate-800">RL-Driven Vision Optimization:</span>{" "}
+                  PPO-based closed-loop system for autonomous vision model retraining,
+                  reducing human annotation by 95%.
+                </li>
+
+                <li>
                   <span className="text-slate-800">Human3D:</span>{" "}
                   constraint-driven 3D reconstruction (manuscript under
                   submission to CVWW 2026; extended version in preparation for
@@ -55,7 +61,7 @@ export default function Home() {
                 </li>
 
                 <li>
-                  <span className="text-slate-800">Active Sensing under Uncertanity:</span>{" "}
+                  <span className="text-slate-800">Active Sensing under Uncertainty:</span>{" "}
                   Reinforcement Learning in Uncertain Biomedical Settings.
                 </li>
               </ul>
@@ -68,9 +74,10 @@ export default function Home() {
                   Highlights
                 </div>
                 <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
+                  <li>RLAIF pipeline: 95% reduction in annotation needs</li>
                   <li>Smart India Hackathon winner (hardware edition)</li>
-                  <li>Built OpenSim IK/dynamics pipeline for biomech features</li>
-                  <li>Monte Carlo synthetic dataset generation + ML regression thesis</li>
+                  <li>GIS satellite mapping & geospatial data pipelines</li>
+                  <li>Monte Carlo synthetic data + ML regression thesis</li>
                 </ul>
               </div>
 
@@ -109,10 +116,10 @@ export default function Home() {
                 <div className="text-sm font-semibold text-indigo-700">Working Knowledge</div>
                 <p className="mt-1 text-xs text-slate-500">Project-level experience</p>
                 <ul className="mt-3 space-y-1.5 text-sm text-slate-700">
-                  <li>3D reconstruction (SMPL, PyTorch3D)</li>
-                  <li>Reinforcement learning</li>
-                  <li>Computer vision (YOLO, SAM)</li>
-                  <li>Real-time control systems</li>
+                  <li>Reinforcement learning (PPO, RLAIF)</li>
+                  <li>Computer vision (YOLO, SAM, 3D recon)</li>
+                  <li>Real-time control systems (PID, Simulink)</li>
+                  <li>Data pipelines & GIS mapping</li>
                 </ul>
               </div>
 
@@ -120,9 +127,9 @@ export default function Home() {
                 <div className="text-sm font-semibold text-slate-600">Exposure</div>
                 <p className="mt-1 text-xs text-slate-500">Familiar, building depth</p>
                 <ul className="mt-3 space-y-1.5 text-sm text-slate-700">
+                  <li>MLOps & model retraining infra</li>
                   <li>Neuromorphic sensing</li>
                   <li>ROS / robotic middleware</li>
-                  <li>Spiking neural networks</li>
                   <li>Hardware prototyping</li>
                 </ul>
               </div>
@@ -151,9 +158,9 @@ export default function Home() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FeatureCard
-                title="Active Sensing under Uncertanity"
-                subtitle=" Reinforcement Learning & Biomedical Simulation"
-                href="/projects/Active Sensing"
+                title="RL-Driven Vision Optimization"
+                subtitle="PPO-based autonomous retraining with 95% annotation reduction"
+                href="/projects/rlaif"
               />
               <FeatureCard
                 title="Human3D"

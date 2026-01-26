@@ -4,10 +4,10 @@
   "email": "ashrithaafmc@gmail.com",
   "linkedin": "https://www.linkedin.com/in/ashritha-sai-mani-chundru",
   "github": "",
-  "headline": "I build learning-based robotic systems that reason about human motion, dynamics, and sensing limits.",
+  "headline": "I build systems at the intersection of robotics, biology, computer vision, ML, and data.",
   "subheadline": "MSc Human & Biological Robotics, Imperial College London",
   "stance": "I care less about flashy models and more about whether systems fail loudly, predictably, and usefully.",
-  "topTags": ["Robot learning", "Biomechanics", "Human-in-the-loop", "Perception", "Scientific visualization"],
+  "topTags": ["Robotics", "Biology-ML", "Computer Vision", "Data Systems", "Human-in-the-loop"],
   "highlights": [
     { "title": "ANVYA", "text": "Representation-guided scientific visualization engine for molecular structures (AlphaFold + SMILES + PyMOL)." },
     { "title": "Human3D", "text": "Context-aware 3D human reconstruction pipeline with differentiable biomechanical constraints." },
