@@ -1,42 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 export default function ContactPage() {
   const email = "ashrithaafmc@gmail.com";
-  const linkedin = "https://www.linkedin.com/in/ashritha-sai-mani-chundru"; // <-- replace
+  const linkedin = "https://www.linkedin.com/in/ashritha-sai-mani-chundru";
+  const github = "https://github.com/Ashritha-sai";
 
   const [copied, setCopied] = useState(false);
-
-  const recruiterTemplate = useMemo(() => {
-    return `Hi Ashritha,
-
-I found your portfolio and would love to connect about a role/opportunity.
-
-Context:
-- Role:
-- Company:
-- Why you thought of me:
-- Timeline:
-- Anything I should read ahead:
-
-Best,
-[Name]`;
-  }, []);
 
   async function copyEmail() {
     try {
       await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
-    } catch {
-      // ignore
-    }
-  }
-
-  async function copyTemplate() {
-    try {
-      await navigator.clipboard.writeText(recruiterTemplate);
       setCopied(true);
       setTimeout(() => setCopied(false), 1200);
     } catch {
@@ -84,6 +59,15 @@ Best,
             >
               LinkedIn →
             </a>
+
+            <a
+              href={github}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-700 transition hover:bg-white"
+            >
+              GitHub →
+            </a>
           </div>
         </div>
 
@@ -100,39 +84,24 @@ Best,
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-slate-100 p-5">
-            <div className="text-sm font-semibold text-slate-700">Helpful context</div>
+            <div className="text-sm font-semibold text-slate-700">Coffee chat topics</div>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-600">
-              <li>Role + stack</li>
-              <li>Timeline + location (remote/hybrid)</li>
-              <li>What problem you want me to own</li>
-              <li>Links (JD, repo, paper, product)</li>
+              <li>Robotics ethics</li>
+              <li>Startups</li>
+              <li>Sci-fi</li>
+              <li>Brain-computer interfaces</li>
+              <li>Grad school life</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-100 p-5">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="text-sm font-semibold text-slate-700">
-                Quick contact template
-              </div>
-              <p className="mt-1 text-sm text-slate-500">
-                Copy-paste this so we skip the awkward “hi” phase.
-              </p>
-            </div>
-
-            <button
-              onClick={copyTemplate}
-              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-800 transition hover:bg-slate-100"
-              type="button"
-            >
-              Copy template
-            </button>
+        <div className="mt-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-100 p-5">
+            <div className="text-sm font-semibold text-slate-700">For students</div>
+            <p className="mt-2 text-slate-600">
+              Happy to share anecdotes and guidance if you're navigating research, grad school applications, or early career decisions. Just reach out.
+            </p>
           </div>
-
-          <pre className="mt-4 whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-{recruiterTemplate}
-          </pre>
         </div>
       </section>
 
