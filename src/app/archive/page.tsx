@@ -17,6 +17,26 @@ export default function ArchivePage() {
   const milestones = useMemo<Milestone[]>(
     () => [
       {
+        id: "hack-mit-grand-hack-2026",
+        title: "MIT Hacking Medicine Grand Hack — Selected",
+        period: "2026",
+        category: "Hackathon",
+        summary: "Selected to participate in the MIT Hacking Medicine Grand Hack.",
+        details: [
+          "Selected for the MIT Hacking Medicine Grand Hack.",
+        ],
+      },
+      {
+        id: "hack-london-neurotech-2026",
+        title: "London Neurotech Hackathon",
+        period: "Feb 2026",
+        category: "Hackathon",
+        summary: "Participated in the London Neurotech Hackathon.",
+        details: [
+          "Participated in the London Neurotech Hackathon.",
+        ],
+      },
+      {
         id: "pub-active-sensing-2026",
         title: "Active Sensing under Uncertainty",
         period: "Jan 2026",
@@ -24,6 +44,16 @@ export default function ArchivePage() {
         summary: "Manuscript submitted.",
         details: [
           "Manuscript submitted for publication.",
+        ],
+      },
+      {
+        id: "hack-imperial-data-analytics-2025",
+        title: "Imperial College Data Analytics Hackathon",
+        period: "Nov 2025",
+        category: "Hackathon",
+        summary: "Participated in the Imperial College Data Analytics Hackathon.",
+        details: [
+          "Participated in the Imperial College Data Analytics Hackathon.",
         ],
       },
       {
@@ -62,6 +92,16 @@ export default function ArchivePage() {
           "Fabricated scaffolds using three techniques; compared outcomes to identify optimal approach.",
           "Identified freeze drying as the best technique for scaffold production in this study context.",
           "Built competence in scaffold characterisation, analysis, and independent problem-solving under time constraints.",
+        ],
+      },
+      {
+        id: "sih-2024",
+        title: "Smart India Hackathon 2024",
+        period: "2024",
+        category: "Hackathon",
+        summary: "Participated in the Smart India Hackathon national stage.",
+        details: [
+          "Participated in the Smart India Hackathon 2024.",
         ],
       },
       {
