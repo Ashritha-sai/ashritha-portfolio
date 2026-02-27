@@ -1,40 +1,67 @@
 [
   {
-    "slug": "anvya",
-    "title": "ANVYA — Representation-Guided Scientific Reasoning Engine",
-    "timeframe": "Mar 2025 – Nov 2025",
+    "slug": "mujoco",
+    "title": "Dynamic Pole Balancing with Nonlinear MPC",
+    "timeframe": "Feb 2026 – Present",
     "location": "London, UK",
-    "tags": ["Scientific Viz", "ML", "Systems"],
-    "oneLiner": "Turns biological prompts into controllable, interpretable 3D molecular visualizations instead of prompt-magic.",
-    "problem": "Most molecular visualization workflows are powerful but manual; automated ones often hide assumptions. ANVYA aims to make structure generation explicit, controllable, and failure-aware.",
+    "tags": ["Robotics", "Control", "Simulation"],
+    "oneLiner": "An underactuated dynamic control system using a CasADi-based Nonlinear Model Predictive Controller to balance a free-swinging pole on a 7-DOF Franka Emika Panda robot.",
+    "problem": "Balancing an unactuated pole on a high-DOF manipulator requires real-time optimal control that can handle nonlinear dynamics, underactuation, and the tight coupling between end-effector motion and pole stability.",
     "built": [
-      "Designed a dual-mode (scientific/game) 3D visualization engine for molecular structures.",
-      "Integrated semantic parsing, predictive assembly, and refinement using PyMOL, SMILES interpreters, and AlphaFold outputs.",
-      "Built a context-aware visualization controller and custom domain-specific prompt layer."
+      "Engineered a high-fidelity MuJoCo physics simulation featuring a Franka Panda manipulator with a free-hinged, unactuated pole attached to its end-effector.",
+      "Formulated the system's equations of motion using a Linear Inverted Pendulum (LIP) approximation to allow for real-time optimal control calculations.",
+      "Developed a receding-horizon Nonlinear Model Predictive Control (NMPC) solver from scratch using CasADi to compute optimal end-effector accelerations.",
+      "Implemented an Operational Space Controller (Inverse Dynamics) to map the MPC's Cartesian acceleration commands into precise joint torques across the 7-DOF arm at a 500Hz control rate."
     ],
-    "stack": ["Python", "PyMOL", "AlphaFold outputs", "SMILES", "Prompt parsing"],
+    "stack": ["Python", "C++", "MuJoCo", "CasADi", "IPOPT", "NumPy", "SciPy"],
     "results": [
-      "Reusable pipeline that converts prompts into structured visualization actions.",
-      "Clear separation of reasoning, assembly, and rendering for debuggability."
+      "Base physics simulation and unactuated joint modeling complete.",
+      "Actively tuning MPC cost function weights to balance control effort against pole angle deviation.",
+      "Next: Domain Randomization (varying pole mass and friction) to prove controller robustness for Sim-to-Real transfer."
+    ],
+    "links": { "github": "", "demo": "", "paper": "" }
+  },
+  {
+    "slug": "vla",
+    "title": "VLA-Agent: Language-Conditioned Robotic Manipulation",
+    "timeframe": "Oct 2025 – Present",
+    "location": "London, UK",
+    "tags": ["Embodied AI", "LLM", "Robotics"],
+    "oneLiner": "An embodied AI system that translates natural language instructions into multi-step physical robotic actions using Large Language Models and constraint-based manipulation.",
+    "problem": "Bridging natural language understanding and physical manipulation requires reliable grounding of abstract instructions into precise, verifiable robotic actions—with error recovery when the physical world doesn't cooperate.",
+    "built": [
+      "Engineered a closed-loop tabletop physics simulation in PyBullet, featuring a 7-DOF Franka Emika Panda arm interacting with dynamically spawned objects.",
+      "Developed a robust Skills Layer of manipulation primitives (pick, place, push) handling Inverse Kinematics, joint-space motion, and constraint-based grasping.",
+      "Designed an orchestration agent bridging physical environments with LLMs (GPT-4 / Claude), building contextual scene prompts and parsing structured JSON action plans.",
+      "Implemented a feedback loop where the system verifies physical success of actions and re-prompts the LLM for error correction.",
+      "Built a production-grade codebase with an interactive CLI REPL and 176 headless tests validating everything from low-level physics to prompt construction."
+    ],
+    "stack": ["Python", "PyBullet", "OpenAI API", "Anthropic API", "NumPy", "SciPy", "Pytest"],
+    "results": [
+      "Version 1.0 fully deployed: agent successfully executes complex multi-turn spatial reasoning tasks with reliable pick-and-place and robust error recovery.",
+      "Next: Transitioning to an in-house Agentic Training Pipeline—building a headless synthetic data generator to fine-tune a local SLM via LoRA, followed by DPO alignment."
     ],
     "links": { "github": "", "demo": "", "paper": "" }
   },
   {
     "slug": "human3d",
-    "title": "Human3D — Context-Aware 3D Reconstruction",
-    "timeframe": "Oct 2025 – Present",
+    "title": "Human3D — Single-Shot 3D Gaussian Splatting Engine",
+    "timeframe": "2025 – Present",
     "location": "London, UK",
-    "tags": ["Vision", "Graphics", "Biomechanics"],
-    "oneLiner": "End-to-end 2D-to-3D reconstruction with scene context and biomechanical constraints for plausibility.",
-    "problem": "Pure vision pipelines can produce anatomically implausible humans. Human3D adds constraints and context so reconstructions behave like real bodies.",
+    "tags": ["Vision", "Graphics", "Generative 3D"],
+    "oneLiner": "An end-to-end 3D reconstruction pipeline that converts a single 2D RGB image into a view-consistent 3D representation using differentiable Gaussian rasterization.",
+    "problem": "Deterministic 2.5D point-cloud projection produces hollow, view-inconsistent reconstructions. A generative approach using 3D Gaussian Splatting with smart initialization solves the cold-start problem and produces dense, renderable 3D assets.",
     "built": [
-      "Implemented pipeline using MiDaS (depth), YOLO (keypoints), SAM/CLIP (segmentation).",
-      "Built 3D reconstruction using SMPL/SMPL-X and PyTorch3D; used Blender for evaluation.",
-      "Developing differentiable constraints: joint limits, bone-length priors, COM stability."
+      "Upgraded a legacy deterministic 2.5D point-cloud projection system into a fully generative 3D Gaussian Splatting pipeline.",
+      "Leveraged the original perception stack (YOLOv8, SAM, MiDaS depth) to create clean RGB-D priors, solving the cold-start initialization problem for the Gaussians.",
+      "Engineered a PyTorch training loop from scratch featuring adaptive densification (cloning and splitting Gaussians) to resolve fine geometric details.",
+      "Integrated a differentiable GPU rasterization backend using the gsplat library, utilizing Mixed Precision (AMP) to significantly accelerate training."
     ],
-    "stack": ["PyTorch", "MiDaS", "YOLO", "SAM", "CLIP", "SMPL/SMPL-X", "PyTorch3D", "Blender"],
+    "stack": ["PyTorch 2.x", "CUDA", "gsplat", "MiDaS", "SAM", "YOLOv8", "Mixed Precision (AMP)"],
     "results": [
-      "Manuscript under submission to CVWW 2026; extended version in preparation for CRV 2026."
+      "Optimized 10K+ Gaussians in under 20 seconds on consumer hardware (RTX 3050), achieving ~26dB PSNR.",
+      "Real-time rendering at ~200 FPS (5 ms).",
+      "Pipeline exports binary PLY assets compatible with standard browser-based 3D splat viewers."
     ],
     "links": { "github": "", "demo": "", "paper": "" }
   },

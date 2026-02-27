@@ -8,7 +8,7 @@ type Milestone = {
   id: string;
   title: string;
   period: string;
-  category: "Fellowship" | "Award" | "Hackathon" | "Exam" | "Conference" | "Future";
+  category: "Fellowship" | "Award" | "Hackathon" | "Exam" | "Conference" | "Publication" | "Future";
   summary: string;
   details: string[];
 };
@@ -17,16 +17,13 @@ export default function ArchivePage() {
   const milestones = useMemo<Milestone[]>(
     () => [
       {
-        id: "future-human3d-cvww-crv",
-        title: "Human3D Publications",
-        period: "2026 (planned)",
-        category: "Future",
-        summary:
-          "Manuscript under submission to CVWW 2026; extended version in preparation for CRV 2026.",
+        id: "pub-active-sensing-2026",
+        title: "Active Sensing under Uncertainty",
+        period: "Jan 2026",
+        category: "Publication",
+        summary: "Manuscript submitted.",
         details: [
-          "Theme: constraint-driven 3D reconstruction and evaluation under noisy perception pipelines.",
-          "Emphasis: reproducibility, failure-mode analysis, and physically plausible outputs.",
-          "Artifacts: paper + demo + cleaned pipeline notes (where possible).",
+          "Manuscript submitted for publication.",
         ],
       },
       {
@@ -158,7 +155,7 @@ export default function ArchivePage() {
 
       <section className="animate-breathe rounded-2xl border border-slate-200 bg-white/80 p-6">
         <div className="mb-5 flex flex-wrap gap-2 text-xs text-slate-600">
-          <Pill label="Future" color="slate" />
+          <Pill label="Publication" color="amber" />
           <Pill label="Conference" color="pink" />
           <Pill label="Fellowship" color="emerald" />
           <Pill label="Hackathon" color="indigo" />
@@ -212,6 +209,7 @@ function Pill({ label, color }: { label: string; color: string }) {
     emerald: "border-emerald-300 bg-emerald-100 text-emerald-700",
     indigo: "border-indigo-300 bg-indigo-100 text-indigo-700",
     sky: "border-sky-300 bg-sky-100 text-sky-700",
+    amber: "border-amber-300 bg-amber-100 text-amber-700",
   };
 
   return (
@@ -295,8 +293,8 @@ function TimelineItem({
 
 function categoryDot(category: Milestone["category"]) {
   switch (category) {
-    case "Future":
-      return "border-slate-400 bg-slate-100";
+    case "Publication":
+      return "border-amber-500 bg-amber-200";
     case "Conference":
       return "border-pink-500 bg-pink-200";
     case "Fellowship":
