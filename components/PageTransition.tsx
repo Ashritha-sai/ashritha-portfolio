@@ -8,6 +8,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setShow(false);
     const t = setTimeout(() => setShow(true), 30);
     return () => clearTimeout(t);
