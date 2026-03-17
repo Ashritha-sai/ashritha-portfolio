@@ -24,7 +24,19 @@
       "Bash(taskkill:*)",
       "Bash(npm ls:*)",
       "Bash(node:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(grep -r \"^import\\\\|^export\" /c/Users/Ashritha/Desktop/ashritha-portfolio/components/*.tsx)",
+      "Bash(grep -r import.*from /c/Users/Ashritha/Desktop/ashritha-portfolio/src/app --include=*.tsx)",
+      "Bash(wc -l /c/Users/Ashritha/Desktop/ashritha-portfolio/content/*.json)",
+      "Bash(rm -f src/app/research/page.tsx)",
+      "Bash(rmdir src/app/research)",
+      "Bash(rm -f src/app/Leadership/page.tsx)",
+      "Bash(rmdir src/app/Leadership)",
+      "Bash(rm -f src/app/archive/page.tsx)",
+      "Bash(rm -f content/site.json content/projects.json content/experience.json content/archive.json)",
+      "Bash(rmdir content:*)",
+      "Bash(rm -f lib/content.ts)",
+      "Bash(rm -f public/model.glb)"
     ]
   }
 }
