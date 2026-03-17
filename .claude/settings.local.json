@@ -23,7 +23,8 @@
       "Bash(ffmpeg:*)",
       "Bash(taskkill:*)",
       "Bash(npm ls:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

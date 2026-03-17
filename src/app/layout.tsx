@@ -2,6 +2,7 @@ import "./globals.css";
 import { DM_Serif_Display, Inter, JetBrains_Mono } from "next/font/google";
 import { PageTransition } from "@/components/PageTransition";
 import { Nav } from "@/components/Nav";
+import { GridBackground } from "@/components/GridBackground";
 
 const dmSerif = DM_Serif_Display({
   weight: "400",
@@ -37,10 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-[#0D0D0D] text-[#E0DDD5]">
         <div className="noise-overlay" />
 
-        {/* Subtle grid background */}
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-0 opacity-[0.02] [background-image:linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] [background-size:80px_80px]" />
-        </div>
+        {/* Animated grid background */}
+        <GridBackground />
 
         <Nav />
 
