@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from "react";
  * ParticleBackground
  * - Renders an interactive particle system that follows the mouse cursor
  * - Particles gently drift and connect with nearby particles
- * - Designed for light theme with soft blue-gray tones
+ * - Dark theme with cyan accent and violet cursor connections
  */
 
 type Particle = {
@@ -33,8 +33,8 @@ export function ParticleBackground() {
     let w = 0;
     let h = 0;
     let dpr = 1;
-    const PARTICLE_COUNT = 90;
-    const CONNECTION_DISTANCE = 120;
+    const PARTICLE_COUNT = 60;
+    const CONNECTION_DISTANCE = 150;
     const MOUSE_INFLUENCE_DISTANCE = 200;
     const MOUSE_ATTRACTION_STRENGTH = 0.02;
 
@@ -128,7 +128,7 @@ export function ParticleBackground() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(99, 102, 241, 0.6)"; // indigo-500
+        ctx.fillStyle = "rgba(0, 255, 224, 0.4)";
         ctx.fill();
       }
 
@@ -145,7 +145,7 @@ export function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(129, 140, 248, ${opacity})`; // indigo-400
+            ctx.strokeStyle = `rgba(0, 255, 224, ${opacity})`;
             ctx.stroke();
           }
         }
@@ -163,7 +163,7 @@ export function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`; // indigo-500
+            ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`;
             ctx.stroke();
           }
         }

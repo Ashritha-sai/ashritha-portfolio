@@ -7,7 +7,23 @@
       "Bash(git push:*)",
       "Bash(cd:*)",
       "Bash(git -C \"C:\\\\Users\\\\Ashritha\\\\ashritha-portfolio\" status)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(cd \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\" && mv \"src/app/projects/Active Sensing\" \"src/app/projects/active-sensing\" && mv \"src/app/projects/MSc Project\" \"src/app/projects/msc-project\")",
+      "Bash(which ffmpeg:*)",
+      "Bash(ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:02 -frames:v 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame1.png\" -y 2>&1 | tail -5 && ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:05 -frames:v 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame2.png\" -y 2>&1 | tail -5 && ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:08 -frames:v 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame3.png\" -y 2>&1 | tail -5 && ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:12 -frames:v 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame4.png\" -y 2>&1 | tail -5)",
+      "Bash(ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:15 -frames:v 1 -update 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame5.png\" -y 2>&1 | tail -3 && ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:18 -frames:v 1 -update 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame6.png\" -y 2>&1 | tail -3 && ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" -ss 00:00:22 -frames:v 1 -update 1 \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\frame7.png\" -y 2>&1 | tail -3)",
+      "Bash(ffmpeg -i \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\\\\WhatsApp Video 2026-03-15 at 19.25.57.mp4\" 2>&1 | grep Duration)",
+      "Bash(cd \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\" && npm install framer-motion 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\Ashritha\\\\Desktop\\\\ashritha-portfolio\" && npm install three @react-three/fiber @react-three/drei @types/three 2>&1 | tail -5)",
+      "WebFetch(domain:localhost)",
+      "Bash(ffprobe:*)",
+      "Bash(C:/Users/Ashritha/miniconda3/Scripts/ffprobe -v error -show_entries format=duration -show_entries stream=width,height -of default=noprint_wrappers=1 \"C:/Users/Ashritha/Desktop/ashritha-portfolio/WhatsApp Video 2026-03-15 at 19.25.57.mp4\")",
+      "Bash(ffmpeg:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm ls:*)",
+      "Bash(node:*)"
     ]
   }
 }

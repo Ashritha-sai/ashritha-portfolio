@@ -9,7 +9,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-export default function ProsthesisPage() {
+export default function MScProjectPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-24">
       <Link href="/projects" className="text-sm text-[#4A4A4A] hover:text-[#FF4D00] transition-colors">
@@ -18,42 +18,42 @@ export default function ProsthesisPage() {
 
       <div className="mt-8">
         <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] text-[#E0DDD5]">
-          Adaptive Prosthesis Control — Hackathon Winner
+          Neuromorphic Control for Robotic Augmentation
         </h1>
         <p className="text-[#8A8A8A] mt-4 text-lg leading-relaxed">
-          EEG-driven control with stabilised real-time servo execution.
+          EMG–IMU fusion for real-time neuromorphic control under dual-task conditions.
         </p>
         <p className="text-sm font-[family-name:var(--font-mono)] text-[#4A4A4A] mt-2">
-          Visakhapatnam, India · Oct 2023 – May 2024
+          Imperial College London · Jan 2026 – Present
         </p>
       </div>
 
       <div className="space-y-8 mt-12">
         <Section title="Challenge">
           <p className="text-[#8A8A8A]">
-            BCI signals are noisy but prosthetic control needs reliable commands. System focuses on robust preprocessing and stabilised actuation.
+            Robotic augmentation requires seamless integration of biological signals (EMG, IMU) with real-time control systems, especially under cognitive dual-task conditions.
           </p>
         </Section>
 
-        <Section title="Implementation">
+        <Section title="Approach">
           <ul className="list-disc pl-5 space-y-2">
-            <li className="text-[#8A8A8A]">EEG preprocessing/artifact removal/gesture classification.</li>
-            <li className="text-[#8A8A8A]">Real-time servo control for multi-gesture movements.</li>
-            <li className="text-[#8A8A8A]">Stabilisation layer for noise-suppressed command execution.</li>
+            <li className="text-[#8A8A8A]">EMG–IMU sensor fusion pipeline for continuous robotic control.</li>
+            <li className="text-[#8A8A8A]">Neuromorphic processing principles for low-latency signal interpretation.</li>
+            <li className="text-[#8A8A8A]">Single- vs dual-task performance characterization.</li>
+            <li className="text-[#8A8A8A]">Real-time adaptive control loop.</li>
           </ul>
         </Section>
 
         <Section title="Stack">
           <p className="text-[#8A8A8A]">
-            Python · Signal Processing · EEG · Embedded Control
+            Python · EMG · IMU · Neuromorphic · Signal Processing · Real-time Control
           </p>
         </Section>
 
-        <Section title="Results">
-          <ul className="list-disc pl-5 space-y-2">
-            <li className="text-[#8A8A8A]"><span className="text-[#E0DDD5]">Winner:</span> Smart India Hackathon (Hardware Edition).</li>
-            <li className="text-[#8A8A8A]">Reliable gesture-to-actuation mapping under noise.</li>
-          </ul>
+        <Section title="Status">
+          <p className="text-[#8A8A8A]">
+            Ongoing MSc research project at Imperial College London. Core sensor fusion and processing pipeline under development.
+          </p>
         </Section>
       </div>
     </div>

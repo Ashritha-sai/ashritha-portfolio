@@ -1,36 +1,60 @@
 import "./globals.css";
+import { DM_Serif_Display, Inter, JetBrains_Mono } from "next/font/google";
 import { PageTransition } from "@/components/PageTransition";
-import { ParticleBackground } from "@/components/ParticleBackground";
 import { Nav } from "@/components/Nav";
+
+const dmSerif = DM_Serif_Display({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+export const metadata = {
+  title: "Ashritha — Builder & Robotics Engineer",
+  description:
+    "I build intelligent systems at the intersection of robotics, biology, computer vision, and ML.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-slate-100 text-slate-800">
-        <ParticleBackground />
-        <SiteBackground />
+    <html
+      lang="en"
+      className={`${dmSerif.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
+      <body className="min-h-screen bg-[#0D0D0D] text-[#E0DDD5]">
+        <div className="noise-overlay" />
+
+        {/* Subtle grid background */}
+        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+          <div className="absolute inset-0 opacity-[0.02] [background-image:linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] [background-size:80px_80px]" />
+        </div>
+
         <Nav />
 
-        <main className="mx-auto max-w-5xl px-6 py-12">
+        <main>
           <PageTransition>{children}</PageTransition>
         </main>
 
-        <footer className="border-t border-slate-200 py-10">
-          <div className="mx-auto max-w-5xl px-6 text-sm text-slate-500">
-            London, UK · Open to early-stage roles from Jan 2026
+        <footer className="border-t border-[#262626]/50 py-8">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 text-xs text-[#4A4A4A]">
+            <span>London, UK</span>
+            <span className="font-[family-name:var(--font-mono)]">2026</span>
           </div>
         </footer>
       </body>
     </html>
-  );
-}
-
-function SiteBackground() {
-  return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-      <div className="absolute inset-0 bg-[radial-gradient(800px_circle_at_20%_10%,rgba(99,102,241,0.08),transparent_60%),radial-gradient(700px_circle_at_80%_30%,rgba(16,185,129,0.06),transparent_55%),radial-gradient(900px_circle_at_50%_80%,rgba(236,72,153,0.05),transparent_60%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-100 via-slate-100/70 to-slate-100" />
-      <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(to_right,#475569_1px,transparent_1px),linear-gradient(to_bottom,#475569_1px,transparent_1px)] [background-size:48px_48px]" />
-    </div>
   );
 }

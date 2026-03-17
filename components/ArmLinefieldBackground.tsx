@@ -27,7 +27,7 @@ function clamp(v: number, lo: number, hi: number) {
 
 /**
  * A minimalist robotic arm silhouette built from polyline points (normalized 0..1).
- * This is intentionally abstract so it reads as “robot arm” without screaming stock art.
+ * This is intentionally abstract so it reads as "robot arm" without screaming stock art.
  * If you want a more accurate arm, we can replace this with points sampled from an SVG path.
  */
 function armShapePoints(): Pt[] {
@@ -148,7 +148,7 @@ export function ArmLinefieldBackground({
     const T_GAP = 0.5;
     const T_TOTAL = T_DRAW + T_HOLD + T_DISSOLVE + T_GAP;
 
-    let t0 = performance.now();
+    const t0 = performance.now();
 
     const render = () => {
       const now = performance.now();
@@ -175,19 +175,19 @@ export function ArmLinefieldBackground({
       // clear
       ctx.clearRect(0, 0, w, h);
 
-      // subtle vignette behind effect (helps readability) - light theme version
+      // subtle vignette behind effect (helps readability) - dark theme version
       const vignette = ctx.createRadialGradient(w * 0.55, h * 0.40, 0, w * 0.55, h * 0.40, Math.max(w, h) * 0.75);
-      vignette.addColorStop(0, `rgba(241,245,249,0)`);
-      vignette.addColorStop(1, `rgba(241,245,249,0.4)`);
+      vignette.addColorStop(0, "rgba(10,10,10,0)");
+      vignette.addColorStop(1, "rgba(10,10,10,0.6)");
       ctx.fillStyle = vignette;
       ctx.fillRect(0, 0, w, h);
 
-      // scale guide into screen space (anchor it to right-ish so it feels “techy wallpaper”)
+      // scale guide into screen space (anchor it to right-ish so it feels "techy wallpaper")
       const scale = Math.min(w, h) * 1.05;
       const ox = w * 0.58;
       const oy = h * 0.52;
 
-      // how much of the outline is “revealed”
+      // how much of the outline is "revealed"
       const revealCount = Math.floor(guide.length * (isDrawing ? drawProg : 1));
       const maxIndex = isDrawing ? Math.max(10, revealCount) : guide.length;
 
@@ -203,7 +203,7 @@ export function ArmLinefieldBackground({
           if (i === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = "rgba(71,85,105,1)";
+        ctx.strokeStyle = "rgba(0, 255, 224, 0.3)";
         ctx.stroke();
       }
 
@@ -236,10 +236,10 @@ export function ArmLinefieldBackground({
         ctx.beginPath();
         ctx.arc(px, py, 2, 0, Math.PI * 2);
 
-        ctx.fillStyle = "rgba(71,85,105,1)";
+        ctx.fillStyle = "rgba(0, 255, 224, 0.5)";
         ctx.fill();
 
-        // draw micro-line to next guide point (gives “lines forming” feel)
+        // draw micro-line to next guide point (gives "lines forming" feel)
         const next = guide[Math.min(span - 1, baseGi + 1)];
         const nx = ox + (next.x - 0.5) * scale;
         const ny = oy + (next.y - 0.5) * scale;
@@ -248,7 +248,7 @@ export function ArmLinefieldBackground({
         ctx.beginPath();
         ctx.moveTo(px, py);
         ctx.lineTo(lerp(px, nx, 0.28), lerp(py, ny, 0.28));
-        ctx.strokeStyle = "rgba(71,85,105,1)";
+        ctx.strokeStyle = "rgba(139, 92, 246, 0.3)";
         ctx.stroke();
       }
 
@@ -264,11 +264,11 @@ export function ArmLinefieldBackground({
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [guide, opacity, density, speed]);
-return (
-  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <canvas ref={canvasRef} className="absolute inset-0" />
-    {/* very light readability mask for light theme */}
-    <div className="absolute inset-0 bg-gradient-to-b from-slate-100/5 via-slate-100/10 to-slate-100/20" />
-  </div>
-);
+  return (
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <canvas ref={canvasRef} className="absolute inset-0" />
+      {/* dark readability mask */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/5 via-[#0A0A0A]/10 to-[#0A0A0A]/30" />
+    </div>
+  );
 }

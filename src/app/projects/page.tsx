@@ -1,194 +1,173 @@
 import Link from "next/link";
 
 type Project = {
-  slug?: string; // if present, card links to a page
+  slug?: string;
   title: string;
   desc: string;
-  stack?: string;
   date: string;
   tags?: string[];
 };
 
 const featured: Project[] = [
-
   {
-    slug: "MSc Project",
+    slug: "msc-project",
     title: "Neuromorphic Control for Robotic Augmentation",
-    desc: "EMG–IMU Fusion",
+    desc: "EMG–IMU Fusion under single- and dual-task conditions",
     date: "Jan 2026 – Present",
-    tags: ["Bio-Signal Processing", "Sensor Fusion", "Continuous Control", "Human-Robot Interaction", "Neuromorphic Principles",],
+    tags: ["Bio-Signals", "Sensor Fusion", "Neuromorphic"],
   },
   {
     slug: "rlaif",
     title: "RL-Driven Vision Optimization (RLAIF)",
-    desc: "Automated feedback pipeline using PPO to fine-tune vision models, reducing human annotation needs by 95% with closed-loop autonomous improvement.",
+    desc: "PPO-based autonomous retraining. 95% annotation reduction.",
     date: "Dec 2025 – Present",
-    tags: ["reinforcement learning", "PPO", "computer vision", "RLAIF", "MLOps"],
+    tags: ["PPO", "Vision", "RLAIF"],
+  },
+  {
+    slug: "builders-edge",
+    title: "Builders at Edge — YouTube-to-Robot Training",
+    desc: "Pipeline for using YouTube videos to train robots. Hackathon winner.",
+    date: "2026",
+    tags: ["Robotics", "Video", "Training Pipeline"],
   },
   {
     slug: "mujoco",
-    title: "Dynamic Pole Balancing with Nonlinear MPC",
-    desc: "Underactuated control using a CasADi-based NMPC to balance a free-swinging pole on a 7-DOF Franka Panda in MuJoCo.",
+    title: "Dynamic Pole Balancing with NMPC",
+    desc: "CasADi-based nonlinear MPC on 7-DOF Franka Panda in MuJoCo.",
     date: "Feb 2026 – Present",
-    tags: ["MuJoCo", "NMPC", "CasADi", "operational space control", "sim-to-real"],
+    tags: ["MuJoCo", "NMPC", "Control"],
   },
   {
-    slug: "Active Sensing",
+    slug: "active-sensing",
     title: "Active Sensing under Uncertainty",
-    desc: "Reinforcement Learning & Biomedical Simulation",
+    desc: "RL in uncertain biomedical settings with partial observability.",
     date: "Nov 2025 – Present",
-    tags: ["reinforcement learning", "active sensing", "monte carlo simulation", "biomedical modelling", "partial observability"],
+    tags: ["RL", "Biomedical", "Sensing"],
   },
   {
     slug: "vla",
-    title: "VLA-Agent: Language-Conditioned Robotic Manipulation",
-    desc: "Embodied AI translating natural language into multi-step physical robotic actions using LLMs and constraint-based manipulation.",
+    title: "VLA-Agent: Language-Conditioned Manipulation",
+    desc: "Natural language → multi-step robotic actions via LLM orchestration.",
     date: "Oct 2025 – Present",
-    tags: ["embodied AI", "LLM", "PyBullet", "manipulation", "testing"],
+    tags: ["Embodied AI", "LLM", "Robotics"],
   },
   {
     slug: "human3d",
-    title: "Human3D: Single-Shot 3D Gaussian Splatting Engine",
-    desc: "End-to-end pipeline converting a single 2D RGB image into a view-consistent 3D representation using differentiable Gaussian rasterization.",
+    title: "Human3D: 3D Gaussian Splatting Engine",
+    desc: "Single 2D image → view-consistent 3D. Real-time rendering at 200 FPS.",
     date: "2025 – Present",
-    tags: ["3D Gaussian Splatting", "gsplat", "PyTorch", "CUDA", "real-time rendering"],
+    tags: ["3DGS", "PyTorch", "CUDA"],
   },
   {
     slug: "biomarker",
-    title: "Non-invasive biomarker ML system (Thesis)",
-    desc: "Signal-to-prediction pipeline under noisy, low-data constraints using synthetic dataset generation.",
+    title: "Non-invasive Biomarker ML System",
+    desc: "Monte Carlo photon-transport + ML regression for haemoglobin/glucose.",
     date: "Aug 2024 – May 2025",
-    tags: ["synthetic data", "ML", "biomed"],
+    tags: ["ML", "Simulation", "Bio"],
   },
   {
     slug: "prosthesis",
-    title: "Adaptive prosthesis control (Hackathon winner)",
-    desc: "Real-time EEG-to-gesture classification and stabilised servo control under noise constraints.",
+    title: "Adaptive Prosthesis Control",
+    desc: "EEG-driven gesture classification. Smart India Hackathon winner.",
     date: "Oct 2023 – May 2024",
-    tags: ["real-time", "signals", "hardware"],
+    tags: ["BCI", "Control", "Hardware"],
   },
 ];
 
 const earlyBuilds: Project[] = [
   {
     title: "Geospatial Intelligence & Satellite Mapping",
-    desc: "Built a full GIS mapping pipeline to convert unstructured IRS satellite imagery into structured coordinate maps. Ingested and cleaned raw multispectral data, correcting for atmospheric noise and sensor artifacts.",
-    stack: "GIS · Remote Sensing · Multispectral Data · Coordinate Systems · Data Pipelines",
-    date: "June 2024 – Nov 2024",
-    tags: ["data", "geospatial", "pipelines"],
+    desc: "GIS pipeline: IRS satellite imagery → structured coordinate maps.",
+    date: "Jun – Nov 2024",
   },
   {
-    title: "Electric Vehicle Control System Design",
-    desc: "Designed and tuned PID controllers in MATLAB/Simulink to manage motor speed and torque under varying load conditions. Modelled electric propulsion physics, simulating battery discharge curves and motor response to optimize energy efficiency.",
-    stack: "MATLAB · Simulink · PID Control · Physics Simulation · Control Systems",
+    title: "Electric Vehicle Control System",
+    desc: "PID controllers in MATLAB/Simulink for motor speed and torque.",
     date: "Oct 2023 – May 2024",
-    tags: ["control", "simulation", "systems"],
   },
   {
-    title: "Automatic paper crusher for sustainable waste disposal",
-    desc: "Built from scratch as a team project: sensor-driven automation, embedded coding, and mechanical analysis for safe, repeatable crushing.",
-    stack: "Sensors · Embedded coding · Mechanical design/analysis",
-    date: "2nd year (B.Tech)",
-    tags: ["hardware", "sustainability", "systems"],
+    title: "Automatic Paper Crusher",
+    desc: "Sensor-driven automation with embedded coding.",
+    date: "2nd year B.Tech",
   },
   {
-    title: "Inhaler refurbishment for a startup concept (Fusion 360 + product thinking)",
-    desc: "Refurbished an inhaler design as a venture-style exploration. Learned hands-on presentation, data analysis, biotech product context, and CAD-driven design iteration.",
-    stack: "Fusion 360 · Design iteration · Presentation · Data analysis",
-    date: "1st year (B.Tech)",
-    tags: ["CAD", "biotech", "design"],
+    title: "Inhaler Refurbishment",
+    desc: "CAD-driven design iteration with product thinking.",
+    date: "1st year B.Tech",
   },
 ];
 
 export default function ProjectsPage() {
   return (
-    <div className="space-y-12">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
-        <p className="max-w-3xl text-slate-600">
-          My work spans robotics, biology-aware ML, computer vision, and data-driven systems. I also keep early
-          builds here because they shaped how I think: ship, test, iterate, repeat.
-        </p>
-      </header>
-
-      <SectionHeader
-        title="Featured"
-        subtitle="The projects that best represent how I build today."
-      />
-
-      <div className="grid gap-4 md:grid-cols-2">
-        {featured.map((p) => (
-          <ProjectCard key={p.title} p={p} />
-        ))}
-      </div>
-
-      <SectionHeader
-        title="Early builds"
-        subtitle="Foundation years: hands-on engineering, design, and learning how to make things real."
-      />
-
-      <div className="grid gap-4 md:grid-cols-2">
-        {earlyBuilds.map((p) => (
-          <ProjectCard key={p.title} p={p} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SectionHeader({ title, subtitle }: { title: string; subtitle: string }) {
-  return (
-    <div className="space-y-1">
-      <h2 className="text-xl font-semibold">{title}</h2>
-      <p className="text-sm text-slate-500">{subtitle}</p>
-    </div>
-  );
-}
-
-function ProjectCard({ p }: { p: Project }) {
-  const CardInner = (
-    <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 transition hover:border-slate-300 hover:bg-white">
-      <div className="flex items-start justify-between gap-6">
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold">{p.title}</h3>
-          <p className="text-slate-600">{p.desc}</p>
-
-          <div className="mt-3 space-y-1 text-sm text-slate-500">
-            <div>{p.date}</div>
-            {p.stack ? <div>{p.stack}</div> : null}
-          </div>
-
-          {p.tags?.length ? (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-600"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          ) : null}
-        </div>
-
-        <span className="text-slate-400">
-          {p.slug ? "→" : ""}
+    <div className="max-w-6xl mx-auto px-6 py-24">
+      <div>
+        <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#FF4D00]">
+          Projects
         </span>
+        <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-[#E0DDD5] mt-3">
+          Everything I&apos;ve built
+        </h1>
+        <p className="text-[#8A8A8A] mt-3 max-w-2xl">
+          From research prototypes to production systems.
+        </p>
       </div>
 
-      {p.slug ? (
-        <p className="mt-5 text-sm text-slate-500">Open →</p>
-      ) : null}
+      <div className="mt-16">
+        <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#4A4A4A] mb-6 block">
+          Featured
+        </span>
+        <div className="grid gap-4 md:grid-cols-2">
+          {featured.map((p) => (
+            <Link
+              key={p.title}
+              href={`/projects/${p.slug}`}
+              className="rounded-xl border border-[#262626] bg-[#161616] p-6 project-card group block"
+            >
+              <h3 className="font-medium text-[#E0DDD5] group-hover:text-[#FF4D00] transition-colors">
+                {p.title}
+              </h3>
+              <p className="text-sm text-[#8A8A8A] mt-2">{p.desc}</p>
+              <div className="text-xs font-[family-name:var(--font-mono)] text-[#4A4A4A] mt-4">
+                {p.date}
+              </div>
+              {p.tags && p.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[10px] font-[family-name:var(--font-mono)] tracking-wide text-[#4A4A4A] border border-[#262626] rounded-full px-2.5 py-0.5"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-20">
+        <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#4A4A4A] mb-6 block">
+          Early Builds
+        </span>
+        <div className="grid gap-4 md:grid-cols-2">
+          {earlyBuilds.map((p) => (
+            <div
+              key={p.title}
+              className="rounded-xl border border-[#262626] bg-[#111111] p-6"
+            >
+              <h3 className="font-medium text-[#E0DDD5]">
+                {p.title}
+              </h3>
+              <p className="text-sm text-[#8A8A8A] mt-2">{p.desc}</p>
+              <div className="text-xs font-[family-name:var(--font-mono)] text-[#4A4A4A] mt-3">
+                {p.date}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
-
-  if (!p.slug) return <div>{CardInner}</div>;
-
-  return (
-    <Link href={`/projects/${p.slug}`} className="block">
-      {CardInner}
-    </Link>
-  );
 }
-

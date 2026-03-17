@@ -3,43 +3,36 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const links = [
-  { href: "/projects", label: "Projects" },
-  { href: "/research", label: "Research" },
-  { href: "/Leadership", label: "Leadership" },
-  { href: "/archive", label: "Archive" },
-  { href: "/contact", label: "Contact" },
-];
-
 export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/70 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-semibold tracking-tight text-slate-800 hover:text-indigo-600 transition-colors">
-          Ashritha Sai Mani Chundru
+    <nav className="sticky top-0 z-50 border-b border-[#262626]/50 bg-[#0D0D0D]/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          className="font-[family-name:var(--font-display)] text-xl text-[#E0DDD5] transition-colors hover:text-[#FF4D00]"
+        >
+          A.
         </Link>
-        <div className="flex gap-6 text-sm">
-          {links.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative py-1 transition-colors ${
-                  isActive
-                    ? "text-indigo-600 font-medium"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {link.label}
-                {isActive && (
-                  <span className="absolute -bottom-[17px] left-0 h-0.5 w-full bg-indigo-500 rounded-full" />
-                )}
-              </Link>
-            );
-          })}
+
+        <div className="flex items-center gap-8 text-sm">
+          <Link
+            href="/projects"
+            className={`transition-colors ${
+              pathname.startsWith("/projects")
+                ? "text-[#FF4D00]"
+                : "text-[#8A8A8A] hover:text-[#E0DDD5]"
+            }`}
+          >
+            Work
+          </Link>
+          <a
+            href="/#contact"
+            className="text-[#8A8A8A] transition-colors hover:text-[#E0DDD5]"
+          >
+            Contact
+          </a>
         </div>
       </div>
     </nav>
