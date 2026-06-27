@@ -52,13 +52,6 @@ const featured: Project[] = [
     tags: ["MuJoCo", "NMPC", "Control"],
   },
   {
-    slug: "active-sensing",
-    title: "Active Sensing under Uncertainty",
-    desc: "RL in uncertain biomedical settings with partial observability.",
-    date: "Nov 2025 – Present",
-    tags: ["RL", "Biomedical", "Sensing"],
-  },
-  {
     slug: "vla",
     title: "VLA-Agent: Language-Conditioned Manipulation",
     desc: "Natural language → multi-step robotic actions via LLM orchestration.",

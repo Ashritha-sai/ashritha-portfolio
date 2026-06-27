@@ -97,18 +97,13 @@ export default function Home() {
               </SpecialText>
             </motion.div>
 
-            {/* Buttons */}
+            {/* Accent line */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.6, duration: 0.7 }}
             >
               <div className="accent-line mx-auto mt-8 w-16 md:mx-0" />
-              <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
-                <a href="mailto:ashrithaafmc@gmail.com" className="rounded-lg border border-[#262626] bg-[#161616] px-5 py-2.5 text-sm text-[#E0DDD5] transition-all hover:border-[#FF4D00] hover:text-[#FF4D00]">Email me</a>
-                <a href="https://www.linkedin.com/in/ashritha-sai-mani-chundru" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-[#262626] bg-[#161616] px-5 py-2.5 text-sm text-[#E0DDD5] transition-all hover:border-[#FF4D00] hover:text-[#FF4D00]">LinkedIn</a>
-                <a href="https://github.com/ashritha-sai" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-[#262626] bg-[#161616] px-5 py-2.5 text-sm text-[#E0DDD5] transition-all hover:border-[#FF4D00] hover:text-[#FF4D00]">GitHub</a>
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -303,7 +298,7 @@ export default function Home() {
           </motion.div>
 
           <div className="mt-14 space-y-6">
-            {projects.map((p, i) => (
+            {projects.slice(0, 4).map((p, i) => (
               <motion.div
                 key={p.num}
                 initial={{ opacity: 0, y: 50 }}
@@ -345,7 +340,7 @@ export default function Home() {
           >
             <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#FF4D00]">Contact</p>
             <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5] md:text-5xl">Let&apos;s build something.</h2>
-            <p className="mt-4 text-lg text-[#8A8A8A]">Open to founding engineer roles, early-stage engineering, and research engineering.</p>
+            <p className="mt-4 text-lg text-[#8A8A8A]">Open to talk shop on neural interfaces and robot learning, or to be convinced I should care about something I don&apos;t yet.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="mailto:ashrithaafmc@gmail.com" className="rounded-lg border border-[#262626] bg-[#161616] px-6 py-3 text-sm text-[#E0DDD5] transition-all hover:border-[#FF4D00] hover:text-[#FF4D00]">ashrithaafmc@gmail.com</a>
               <a href="https://www.linkedin.com/in/ashritha-sai-mani-chundru" target="_blank" rel="noopener noreferrer" className="rounded-lg border border-[#262626] bg-[#161616] px-6 py-3 text-sm text-[#E0DDD5] transition-all hover:border-[#FF4D00] hover:text-[#FF4D00]">LinkedIn ↗</a>
