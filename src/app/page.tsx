@@ -313,7 +313,7 @@ export default function Home() {
                     <p className="mt-2 text-sm leading-relaxed text-[#8A8A8A]">{p.desc}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {p.tags.map((t) => (
-                        <span key={t} className="rounded-full border border-[#FF4D00]/40 px-2.5 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-wide text-[#FF4D00]">{t}</span>
+                        <span key={t} className="rounded-full border border-[#FF4D00]/20 px-2.5 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-wide text-[#FF4D00]/50 transition-colors group-hover:border-[#FF4D00]/60 group-hover:text-[#FF4D00]">{t}</span>
                       ))}
                     </div>
                   </div>

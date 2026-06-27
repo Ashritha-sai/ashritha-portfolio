@@ -142,7 +142,7 @@ export default function ProjectsPage() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="text-[10px] font-[family-name:var(--font-mono)] tracking-wide text-[#4A4A4A] border border-[#262626] rounded-full px-2.5 py-0.5"
+                      className="text-[10px] font-[family-name:var(--font-mono)] tracking-wide text-[#FF4D00]/50 border border-[#FF4D00]/20 rounded-full px-2.5 py-0.5 transition-colors group-hover:text-[#FF4D00] group-hover:border-[#FF4D00]/60"
                     >
                       {t}
                     </span>
