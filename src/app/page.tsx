@@ -47,7 +47,7 @@ export default function Home() {
               className="mb-8 inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs tracking-wide text-[#4A4A4A]"
             >
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#FF4D00] animate-pulse" />
-              Building at Imperial College London
+              Building at Imperial College London and Cerebionics
             </motion.div>
 
             {/* Name — big, with SpecialText scramble */}
@@ -134,8 +134,8 @@ export default function Home() {
             >
               <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#FF4D00]">About Me</p>
               <h2 className="mt-4 text-3xl font-medium tracking-tight text-[#E0DDD5] md:text-4xl lg:text-5xl leading-tight">
-                I don&apos;t just research
-                <span className="font-[family-name:var(--font-display)] italic"> — I ship.</span>
+                I research
+                <span className="font-[family-name:var(--font-display)] italic"> and I ship.</span>
               </h2>
             </motion.div>
 
@@ -147,21 +147,25 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.15 }}
             >
               <p className="text-lg leading-relaxed text-[#8A8A8A]">
-                Founding engineer mindset. I build end-to-end systems from research
-                prototype to production — robotics, vision, ML pipelines, data.
+                Founding ML engineer. I build end-to-end systems from research
+                prototype to production. Robotics, vision, ML pipelines, data.
               </p>
               <div className="mt-10 flex flex-wrap gap-x-14 gap-y-6">
                 <div>
-                  <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">12+</div>
+                  <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">15</div>
                   <div className="mt-1 text-sm text-[#4A4A4A]">Projects shipped</div>
                 </div>
                 <div>
-                  <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">3</div>
-                  <div className="mt-1 text-sm text-[#4A4A4A]">Research labs</div>
+                  <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">5</div>
+                  <div className="mt-1 text-sm text-[#4A4A4A]">Labs worked at</div>
                 </div>
                 <div>
                   <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">2×</div>
                   <div className="mt-1 text-sm text-[#4A4A4A]">Hackathon winner</div>
+                </div>
+                <div>
+                  <div className="font-[family-name:var(--font-display)] text-4xl text-[#E0DDD5]">2</div>
+                  <div className="mt-1 text-sm text-[#4A4A4A]">Papers accepted</div>
                 </div>
               </div>
             </motion.div>
