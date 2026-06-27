@@ -24,7 +24,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Ashritha — Builder & Robotics Engineer",
+  title: "Ashritha · Builder & Robotics Engineer",
   description:
     "I build intelligent systems at the intersection of robotics, biology, computer vision, and ML.",
 };

@@ -18,7 +18,7 @@ export default function BuildersEdgePage() {
 
       <div className="mt-8">
         <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] text-[#E0DDD5]">
-          Builders at Edge — YouTube-to-Robot Training
+          Builders at Edge: YouTube-to-Robot Training
         </h1>
         <p className="text-[#8A8A8A] mt-4 text-lg leading-relaxed">
           A pipeline for using YouTube videos to train robots. Built and won at the Builders at Edge hackathon.

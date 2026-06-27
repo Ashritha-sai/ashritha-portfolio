@@ -64,7 +64,7 @@ export default function RLAIFPage() {
           <ul className="list-disc pl-5 space-y-2">
             <li className="text-[#8A8A8A]"><span className="text-[#E0DDD5]">RLAIF over supervised fine-tuning:</span> Reinforcement learning from AI feedback enables continuous improvement without constant human labeling, making the system self-sustaining.</li>
             <li className="text-[#8A8A8A]"><span className="text-[#E0DDD5]">PPO for stable updates:</span> Clipped objectives prevent catastrophic forgetting while allowing meaningful model improvements per iteration.</li>
-            <li className="text-[#8A8A8A]"><span className="text-[#E0DDD5]">Focus on annotation reduction:</span> The bottleneck in production ML systems is often data labeling, not compute—solving this unlocks faster iteration cycles.</li>
+            <li className="text-[#8A8A8A]"><span className="text-[#E0DDD5]">Focus on annotation reduction:</span> The bottleneck in production ML systems is often data labeling, not compute. Solving this unlocks faster iteration cycles.</li>
           </ul>
         </Section>
 

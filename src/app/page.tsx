@@ -53,7 +53,7 @@ export default function Home() {
               Building at Imperial College London and Cerebionics
             </motion.div>
 
-            {/* Name — big, with SpecialText scramble */}
+            {/* Name,big, with SpecialText scramble */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -197,7 +197,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════ TECH STACK — Animated Marquee ════════ */}
+      {/* ════════ TECH STACK,Animated Marquee ════════ */}
       <section className="py-24 md:py-32 border-t border-[#262626]/30 overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 mb-12">
           <motion.h2
@@ -212,7 +212,7 @@ export default function Home() {
           </motion.h2>
         </div>
 
-        {/* Row 1 — scrolls left */}
+        {/* Row 1,scrolls left */}
         <div className="relative mb-4 overflow-hidden">
           <div className="marquee-left-slow flex w-max gap-4">
             {[...techRow1, ...techRow1].map((t, i) => (
@@ -223,7 +223,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Row 2 — scrolls right */}
+        {/* Row 2,scrolls right */}
         <div className="relative mb-4 overflow-hidden">
           <div className="marquee-right-mid flex w-max gap-4">
             {[...techRow2, ...techRow2].map((t, i) => (
@@ -234,7 +234,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Row 3 — scrolls left, faster */}
+        {/* Row 3,scrolls left, faster */}
         <div className="relative overflow-hidden">
           <div className="marquee-left-fast flex w-max gap-4">
             {[...techRow3, ...techRow3].map((t, i) => (
@@ -313,7 +313,7 @@ export default function Home() {
                     <p className="mt-2 text-sm leading-relaxed text-[#8A8A8A]">{p.desc}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {p.tags.map((t) => (
-                        <span key={t} className="rounded-full border border-[#262626] px-2.5 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-wide text-[#4A4A4A]">{t}</span>
+                        <span key={t} className="rounded-full border border-[#FF4D00]/40 px-2.5 py-0.5 font-[family-name:var(--font-mono)] text-[10px] tracking-wide text-[#FF4D00]">{t}</span>
                       ))}
                     </div>
                   </div>

@@ -18,7 +18,7 @@ export default function Human3DPage() {
 
       <div className="mt-8">
         <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] text-[#E0DDD5]">
-          Human3D — 3D Gaussian Splatting Engine
+          Human3D: 3D Gaussian Splatting Engine
         </h1>
         <p className="text-[#8A8A8A] mt-4 text-lg leading-relaxed">
           End-to-end 3D reconstruction converting a single 2D RGB image into a view-consistent 3D representation.

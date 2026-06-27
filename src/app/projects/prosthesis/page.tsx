@@ -18,7 +18,7 @@ export default function ProsthesisPage() {
 
       <div className="mt-8">
         <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] text-[#E0DDD5]">
-          Adaptive Prosthesis Control — Hackathon Winner
+          Adaptive Prosthesis Control: Hackathon Winner
         </h1>
         <p className="text-[#8A8A8A] mt-4 text-lg leading-relaxed">
           EEG-driven control with stabilised real-time servo execution.

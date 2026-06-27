@@ -39,7 +39,7 @@ const featured: Project[] = [
   },
   {
     slug: "builders-edge",
-    title: "Builders at Edge — YouTube-to-Robot Training",
+    title: "Builders at Edge: YouTube-to-Robot Training",
     desc: "Pipeline for using YouTube videos to train robots. Hackathon winner.",
     date: "2026",
     tags: ["Robotics", "Video", "Training Pipeline"],
