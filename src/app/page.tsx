@@ -7,15 +7,18 @@ import { SpecialText } from "../../components/ui/special-text";
 
 /* ─── DATA ─── */
 const projects = [
-  { num: "01", title: "Neuromorphic Control for Robotic Augmentation", desc: "EMG–IMU fusion for real-time robotic augmentation under dual-task conditions.", tags: ["Bio-Signals", "Sensor Fusion", "Neuromorphic"], href: "/projects/msc-project" },
-  { num: "02", title: "RL-Driven Vision Optimization", desc: "PPO-based autonomous retraining. 95% reduction in human annotation.", tags: ["PPO", "Computer Vision", "RLAIF"], href: "/projects/rlaif" },
-  { num: "03", title: "Language-Conditioned Robotic Manipulation", desc: "Natural language → multi-step physical robotic actions via LLM.", tags: ["Embodied AI", "LLM", "PyBullet"], href: "/projects/vla" },
-  { num: "04", title: "3D Gaussian Splatting Engine", desc: "Single-image to 3D. 10K+ Gaussians in under 20 seconds.", tags: ["3DGS", "PyTorch", "CUDA"], href: "/projects/human3d" },
+  { num: "0X", title: "VLA Action Heads on Humanoid Silicon", desc: "On-silicon study on the Jetson AGX Thor. Flow vs AR across latency, DoF, quantization, and energy.", tags: ["VLA Inference", "Edge Silicon", "Humanoid Deployment"], href: "/projects/vla-silicon" },
+  { num: "0", title: "Physics-Grounded Active Sensing for Tissue Characterization", desc: "Spectroscopic sensing as a POMDP over a Kubelka-Munk model, choosing where to measure next.", tags: ["Active Sensing", "POMDP", "Biophotonics"], href: "/projects/tissue-sensing" },
+  { num: "1", title: "Neuromorphic Control for Robotic Augmentation", desc: "EMG-IMU fusion for real-time robotic augmentation under dual-task conditions.", tags: ["Bio-Signals", "Sensor Fusion", "Neuromorphic"], href: "/projects/msc-project" },
+  { num: "2", title: "RL-Driven Vision Optimization", desc: "PPO-based autonomous retraining. 95% reduction in human annotation.", tags: ["PPO", "Computer Vision", "RLAIF"], href: "/projects/rlaif" },
+  { num: "3", title: "Language-Conditioned Robotic Manipulation", desc: "Natural language to multi-step physical robotic actions via LLM.", tags: ["Embodied AI", "LLM", "PyBullet"], href: "/projects/vla" },
+  { num: "4", title: "3D Gaussian Splatting Engine", desc: "Single-image to 3D. 10K+ Gaussians in under 20 seconds.", tags: ["3DGS", "PyTorch", "CUDA"], href: "/projects/human3d" },
 ];
 
 const experience = [
+  { year: "2026–Present", role: "Founding ML Engineer", org: "Cerebionics", desc: "Working on non-invasive BCIs." },
   { year: "2025–26", role: "MSc Human & Biological Robotics", org: "Imperial College London", desc: "Neuromorphic control, EMG-IMU sensor fusion, robotic augmentation." },
-  { year: "2025", role: "Research Intern — Physics-informed ML", org: "IIT Jodhpur", desc: "Kalman filtering, trajectory tracking, spatiotemporal features." },
+  { year: "2025", role: "Research Intern, Physics-informed ML", org: "IIT Jodhpur", desc: "Kalman filtering, trajectory tracking, spatiotemporal features." },
   { year: "2024–25", role: "Research Assistant", org: "IIT Kanpur", desc: "OpenSim biomechanics, inverse kinematics, human-in-the-loop ML." },
   { year: "2023–24", role: "SRFP Research Fellow", org: "IASc–INSA–NASI", desc: "Biological time-series, experimental design, scientific analysis." },
 ];
@@ -257,8 +260,7 @@ export default function Home() {
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#FF4D00]">My Career &</p>
-            <h2 className="mt-1 text-3xl font-medium tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
               <span className="text-[#E0DDD5]">My Career & </span><span className="text-[#FF4D00]">experience</span>
             </h2>
           </motion.div>
@@ -295,8 +297,7 @@ export default function Home() {
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[#E0DDD5]">My</p>
-            <h2 className="mt-1 text-3xl font-medium tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
               <span className="text-[#E0DDD5]">My </span><span className="text-[#FF4D00]">Work</span>
             </h2>
           </motion.div>

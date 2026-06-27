@@ -10,9 +10,23 @@ type Project = {
 
 const featured: Project[] = [
   {
+    slug: "vla-silicon",
+    title: "VLA Action Heads on Humanoid Silicon",
+    desc: "On-silicon study on the Jetson AGX Thor. Flow vs AR across latency, DoF, quantization, and energy.",
+    date: "Targeting IEEE-RAS Humanoids 2026",
+    tags: ["VLA Inference", "Edge Silicon", "Humanoid Deployment"],
+  },
+  {
+    slug: "tissue-sensing",
+    title: "Physics-Grounded Active Sensing for Tissue Characterization",
+    desc: "Spectroscopic sensing as a POMDP over a Kubelka-Munk model, choosing where to measure next.",
+    date: "Accepted, ACM BCB 2025",
+    tags: ["Active Sensing", "POMDP", "Biophotonics"],
+  },
+  {
     slug: "msc-project",
     title: "Neuromorphic Control for Robotic Augmentation",
-    desc: "EMG–IMU Fusion under single- and dual-task conditions",
+    desc: "EMG-IMU fusion under single- and dual-task conditions.",
     date: "Jan 2026 – Present",
     tags: ["Bio-Signals", "Sensor Fusion", "Neuromorphic"],
   },
